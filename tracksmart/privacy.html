@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Track$</title>
+    <style>
+        :root {
+            --bg: #050510;
+            --glass: rgba(255,255,255,0.04);
+            --glass-border: rgba(255,255,255,0.08);
+            --glass-border-hover: rgba(255,255,255,0.15);
+            --text: #f5f5f7;
+            --text-secondary: #86868b;
+            --blue: #007AFF;
+            --blue-dim: rgba(0,122,255,0.12);
+            --icon-from: #2633CC;
+            --icon-to: #5940CC;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+        /* Ambient background */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        .bg-glow .orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(120px); opacity: 0.35;
+        }
+        .bg-glow .orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(38,51,204,0.3), transparent 70%);
+            top: -200px; right: -100px;
+            animation: drift1 20s ease-in-out infinite;
+        }
+        .bg-glow .orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,122,255,0.2), transparent 70%);
+            bottom: 100px; left: -100px;
+            animation: drift2 25s ease-in-out infinite;
+        }
+        @keyframes drift1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 30px); }
+        }
+        @keyframes drift2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -40px); }
+        }
+
+        /* Glass nav */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(5,5,16,0.6);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: var(--text);
+        }
+        .nav-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: linear-gradient(180deg, var(--icon-from), var(--icon-to));
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            box-shadow: 0 2px 12px rgba(38,51,204,0.3);
+        }
+        .nav-logo span { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
+        nav a.back {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.9rem; transition: color 0.2s;
+        }
+        nav a.back:hover { color: var(--text); }
+
+        /* Legal content */
+        .legal {
+            padding: 60px 0 100px;
+            position: relative; z-index: 1;
+        }
+        .legal-badge {
+            display: inline-block;
+            padding: 4px 12px; border-radius: 6px;
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            color: var(--blue);
+            font-size: 0.8rem; font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .legal h1 {
+            font-size: 2.2rem; font-weight: 700;
+            letter-spacing: -0.03em; margin-bottom: 8px;
+        }
+        .legal .effective {
+            color: var(--text-secondary);
+            font-size: 0.9rem; margin-bottom: 40px;
+        }
+        .legal .summary-box {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+        .legal .summary-box ul { list-style: none; padding: 0; }
+        .legal .summary-box li {
+            padding: 6px 0; padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .legal .summary-box li::before {
+            content: '\2713';
+            position: absolute; left: 0;
+            color: var(--blue); font-weight: 600;
+        }
+        .legal h2 {
+            font-size: 1.3rem; font-weight: 600;
+            letter-spacing: -0.01em;
+            margin: 36px 0 12px; padding-top: 8px;
+        }
+        .legal p, .legal li {
+            color: var(--text-secondary);
+            font-size: 0.95rem; margin-bottom: 12px;
+        }
+        .legal ul { padding-left: 20px; margin-bottom: 12px; }
+        .legal li { margin-bottom: 6px; }
+        .legal strong { color: var(--text); }
+        .legal a { color: var(--blue); text-decoration: none; }
+        .legal a:hover { text-decoration: underline; }
+
+        /* Glass footer */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 0;
+            position: relative; z-index: 1;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        footer .container {
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+        footer p { color: var(--text-secondary); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.85rem; transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text); }
+
+        @media (max-width: 640px) {
+            .legal { padding: 40px 0 60px; }
+            .legal h1 { font-size: 1.8rem; }
+            footer .container { justify-content: center; text-align: center; }
+        }
+
+        /* Light mode */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f5f5f7;
+                --glass: rgba(255,255,255,0.55);
+                --glass-border: rgba(0,0,0,0.08);
+                --glass-border-hover: rgba(0,0,0,0.15);
+                --text: #1d1d1f;
+                --text-secondary: #6e6e73;
+                --blue: #0066CC;
+                --blue-dim: rgba(0,102,204,0.1);
+            }
+            nav {
+                background: rgba(245,245,247,0.7);
+                border-bottom-color: rgba(0,0,0,0.06);
+            }
+            .bg-glow .orb { opacity: 0.15; }
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(38,51,204,0.18), transparent 70%); }
+            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%); }
+            .nav-icon {
+                box-shadow: 0 2px 10px rgba(38,51,204,0.2);
+            }
+            .summary-box {
+                box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            }
+            .legal-badge {
+                box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            }
+            footer {
+                border-top-color: rgba(0,0,0,0.06);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="./" class="nav-logo">
+                <div class="nav-icon">
+                    <svg viewBox="0 0 720 808" width="28" height="28" style="position:absolute;opacity:0.15"><path d="M359.999 807.409C367.041 807.409 378.043 804.972 389.045 799.691C639.463 678.663 720 618.147 720 472.344V166.112C720 124.28 700.635 110.877 663.668 96.6616C612.175 77.1668 447.578 21.9317 396.527 5.68599C384.645 2.0307 372.322 0 359.999 0C347.676 0 335.354 2.43686 323.911 5.68599C272.42 21.1194 107.824 77.5731 56.3324 96.6616C19.8043 110.47 0 124.28 0 166.112V472.344C0 618.147 84.9389 671.759 330.953 799.691C342.395 805.38 352.958 807.409 359.999 807.409Z" fill="white"/></svg>
+                    <svg viewBox="0 0 222 344" width="14" height="14" style="position:relative;z-index:1"><path d="M109.961 343.555C104.492 343.555 101.367 340.234 101.367 334.18V311.133C45.1172 309.18 14.0625 284.18 4.49219 259.18C2.34375 253.906 1.36719 249.219 1.36719 244.922C1.36719 228.516 12.5 217.188 32.0312 217.188C46.2891 217.188 55.6641 224.414 62.3047 236.914C68.3594 249.219 79.4922 258.398 101.367 260.156V200.391L81.4453 196.289C29.1016 184.766 0 161.133 0 116.992C0 67.1875 42.3828 35.5469 101.367 33.3984V9.375C101.367 3.32031 104.492 0 109.961 0C115.43 0 118.75 3.32031 118.75 9.375V33.5938C169.531 36.5234 201.758 59.7656 211.328 88.2812C212.891 92.5781 213.867 97.2656 213.867 101.953C213.867 116.797 202.539 126.172 184.766 126.172C170.898 126.172 161.133 120.117 153.125 107.422C146.094 94.9219 135.156 86.9141 118.75 84.5703V142.969L138.867 147.266C193.945 159.375 221.68 181.25 221.68 225C221.68 275.586 180.469 307.422 118.75 310.938V334.18C118.75 340.234 115.43 343.555 109.961 343.555ZM65.625 110.547C65.625 124.609 76.9531 132.812 101.367 139.062V84.1797C77.9297 85.9375 65.625 96.2891 65.625 110.547ZM156.445 232.617C156.445 217.578 145.898 210.938 118.75 204.297V259.961C142.773 258.008 156.445 248.242 156.445 232.617Z" fill="white"/></svg>
+                </div>
+                <span>Track$</span>
+            </a>
+            <a href="./" class="back">Back to Track$</a>
+        </div>
+    </nav>
+
+    <section class="legal">
+        <div class="container">
+            <span class="legal-badge">Privacy</span>
+            <h1>Privacy Policy</h1>
+            <p class="effective">Effective Date: April 4, 2026</p>
+
+            <div class="summary-box">
+                <ul>
+                    <li>Your data stays on your device and in your private iCloud account</li>
+                    <li>We do not collect, store, or have access to any of your data</li>
+                    <li>We do not use third-party analytics, advertising, or tracking SDKs</li>
+                    <li>The App is built entirely with Apple first-party frameworks</li>
+                </ul>
+            </div>
+
+            <p>Automation &amp; Development ("we," "us," or "our") built the Track$ app ("the App") as a personal budgeting tool. This Privacy Policy explains how we handle your information.</p>
+
+            <h2>What Data the App Stores</h2>
+            <p>The App allows you to create and manage the following data locally on your device:</p>
+            <ul>
+                <li>Transactions (amounts, descriptions, dates, merchants)</li>
+                <li>Accounts (names, types, balances)</li>
+                <li>Budgets (spending limits, categories, time periods)</li>
+                <li>Categories and tags</li>
+                <li>Savings goals</li>
+                <li>Recurring transactions</li>
+                <li>Categorization and account rules</li>
+                <li>App preferences and settings</li>
+            </ul>
+            <p>All of this data is entered by you manually. The App does not automatically collect data from your bank, email, or other sources unless you explicitly enable bank sync through Apple's FinanceKit framework.</p>
+
+            <h2>How Your Data Is Stored</h2>
+            <ul>
+                <li><strong>On-device:</strong> All data is stored locally on your device using Apple's SwiftData framework</li>
+                <li><strong>iCloud sync:</strong> If you have iCloud enabled, your data is synced across your devices using Apple's CloudKit. This data is stored in your private iCloud account and is not accessible to us or any third party</li>
+                <li><strong>No servers:</strong> We do not operate any servers. Your data never passes through our infrastructure</li>
+            </ul>
+
+            <h2>Third-Party Services</h2>
+            <p>The App does not integrate any third-party services, SDKs, or frameworks. Everything is built using Apple first-party technologies:</p>
+            <ul>
+                <li>SwiftData (local storage)</li>
+                <li>CloudKit (iCloud sync)</li>
+                <li>StoreKit 2 (in-app subscriptions, processed by Apple)</li>
+                <li>FinanceKit (optional bank sync, processed by Apple)</li>
+                <li>UserNotifications (local notifications only)</li>
+            </ul>
+
+            <h2>Biometric Authentication</h2>
+            <p>The App may use Face ID or Touch ID to protect access to your data. Biometric authentication is handled entirely by Apple's LocalAuthentication framework. We do not access, store, or process any biometric data.</p>
+
+            <h2>Notifications</h2>
+            <p>The App uses local notifications only (e.g., budget alerts, savings goal reminders). These notifications are generated on your device. We do not send push notifications from a remote server.</p>
+
+            <h2>In-App Purchases</h2>
+            <p>Subscription purchases are processed entirely by Apple through the App Store. We do not collect or have access to your payment information, Apple ID, or billing details.</p>
+
+            <h2>Data Sharing</h2>
+            <p>We do not share, sell, rent, or disclose any of your data to third parties. Period.</p>
+
+            <h2>Data Deletion</h2>
+            <p>Since all data is stored on your device and in your private iCloud account, you have full control:</p>
+            <ul>
+                <li><strong>Delete app data:</strong> Delete the App from your device to remove all local data</li>
+                <li><strong>Delete iCloud data:</strong> Go to Settings &rarr; Apple ID &rarr; iCloud &rarr; Manage Storage &rarr; Track$ &rarr; Delete Data</li>
+                <li><strong>Delete specific items:</strong> Use the App's built-in delete functions for individual transactions, accounts, budgets, etc.</li>
+            </ul>
+
+            <h2>Children's Privacy</h2>
+            <p>The App is not directed at children under 13. We do not knowingly collect data from children.</p>
+
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date. Your continued use of the App after changes are posted constitutes acceptance of the revised policy.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy, contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:autoanddev@gmail.com">autoanddev@gmail.com</a></p>
+
+            <p style="margin-top: 40px; font-style: italic; font-size: 0.85rem;">This policy applies to Track$ version 1.0 and later.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Automation &amp; Development</p>
+            <div class="footer-links">
+                <a href="terms.html">Terms of Service</a>
+                <a href="./">Track$</a>
+                <a href="../">All Apps</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
