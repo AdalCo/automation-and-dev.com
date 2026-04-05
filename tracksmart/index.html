@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track$ — Your finances, your control</title>
+    <title>Track$mart — Your finances, your control</title>
     <meta name="description" content="Privacy-first budgeting app with AI-powered insights, spending heatmaps, and cash flow forecasting. No third-party SDKs. Your data stays on your device.">
     <style>
         :root {
@@ -18,8 +18,8 @@
             --blue: #007AFF;
             --blue-dim: rgba(0,122,255,0.12);
             --blue-glow: rgba(0,122,255,0.25);
-            --icon-from: #2633CC;
-            --icon-to: #5940CC;
+            --indigo-from: #4A4E9C;
+            --indigo-to: #2D2F6B;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -32,7 +32,7 @@
         }
         .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-        /* Ambient background */
+        /* Ambient background — indigo-shifted to match app PRO palette */
         .bg-glow {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -48,13 +48,13 @@
         }
         .bg-glow .orb-1 {
             width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(38,51,204,0.35), transparent 70%);
+            background: radial-gradient(circle, rgba(74,78,156,0.35), transparent 70%);
             top: -250px; left: -150px;
             animation: drift1 20s ease-in-out infinite;
         }
         .bg-glow .orb-2 {
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(89,64,204,0.3), transparent 70%);
+            background: radial-gradient(circle, rgba(97,102,184,0.3), transparent 70%);
             top: 400px; right: -200px;
             animation: drift2 25s ease-in-out infinite;
         }
@@ -66,7 +66,7 @@
         }
         .bg-glow .orb-4 {
             width: 350px; height: 350px;
-            background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
+            background: radial-gradient(circle, rgba(56,59,133,0.25), transparent 70%);
             top: 50%; left: 60%;
             animation: drift1 18s ease-in-out infinite reverse;
         }
@@ -105,9 +105,9 @@
         }
         .nav-icon {
             width: 32px; height: 32px; border-radius: 8px;
-            background: linear-gradient(180deg, var(--icon-from), var(--icon-to));
+            background: linear-gradient(180deg, var(--indigo-from), var(--indigo-to));
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 2px 12px rgba(38,51,204,0.3);
+            box-shadow: 0 2px 12px rgba(74,78,156,0.35);
         }
         .nav-logo span { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
         .nav-links { display: flex; gap: 28px; align-items: center; }
@@ -127,10 +127,10 @@
         .hero-icon {
             width: 96px; height: 96px;
             border-radius: 24px;
-            background: linear-gradient(180deg, var(--icon-from), var(--icon-to));
+            background: linear-gradient(180deg, var(--indigo-from), var(--indigo-to));
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 28px;
-            box-shadow: 0 8px 40px rgba(38,51,204,0.4), 0 0 80px rgba(89,64,204,0.15);
+            box-shadow: 0 8px 40px rgba(74,78,156,0.45), 0 0 80px rgba(97,102,184,0.15);
         }
         .hero h1 {
             font-size: clamp(2.5rem, 6vw, 3.8rem);
@@ -156,7 +156,7 @@
         }
         .badge {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 12px 24px; border-radius: 12px;
+            padding: 12px 28px; border-radius: 100px;
             font-size: 0.95rem; font-weight: 500;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -216,7 +216,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-radius: 30px;
             padding: 28px;
             transition: border-color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
         }
@@ -226,10 +226,12 @@
             box-shadow: 0 8px 40px rgba(0,0,0,0.2);
             transform: translateY(-2px);
         }
-        .feature-emoji {
-            font-size: 1.6rem;
-            margin-bottom: 14px;
-            display: block;
+        /* Circle icon — mirrors the app's Icon component (filled circle + white symbol at 50%) */
+        .feature-icon {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
         }
         .feature-card h3 {
             font-size: 1.05rem; font-weight: 600;
@@ -259,7 +261,13 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-radius: 30px;
+        }
+        .highlight-icon {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 12px;
         }
         .highlight .number {
             font-size: 2.2rem; font-weight: 700;
@@ -283,7 +291,7 @@
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            border-radius: 30px;
             padding: 48px;
             max-width: 600px;
             margin: 0 auto;
@@ -310,7 +318,7 @@
         .form-group select {
             width: 100%;
             padding: 12px 16px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid var(--glass-border);
             background: rgba(255,255,255,0.03);
             backdrop-filter: blur(8px);
@@ -331,7 +339,7 @@
         .form-group select option { background: #1a1a2e; }
         .submit-btn {
             width: 100%;
-            padding: 14px; border-radius: 12px;
+            padding: 14px; border-radius: 100px;
             border: none;
             background: var(--blue);
             color: #fff;
@@ -378,50 +386,50 @@
             footer .container { justify-content: center; text-align: center; }
         }
 
-        /* Light mode */
+        /* Light mode — matches app's iOS grouped background aesthetic */
         @media (prefers-color-scheme: light) {
             :root {
-                --bg: #f5f5f7;
-                --glass: rgba(255,255,255,0.55);
-                --glass-hover: rgba(255,255,255,0.75);
-                --glass-border: rgba(0,0,0,0.08);
-                --glass-border-hover: rgba(0,0,0,0.15);
-                --glass-strong: rgba(255,255,255,0.65);
+                --bg: #f2f2f7;
+                --glass: rgba(255,255,255,0.82);
+                --glass-hover: rgba(255,255,255,0.92);
+                --glass-border: rgba(0,0,0,0.06);
+                --glass-border-hover: rgba(0,0,0,0.12);
+                --glass-strong: rgba(255,255,255,0.88);
                 --text: #1d1d1f;
                 --text-secondary: #6e6e73;
-                --blue: #0066CC;
-                --blue-dim: rgba(0,102,204,0.1);
-                --blue-glow: rgba(0,102,204,0.15);
+                --blue: #007AFF;
+                --blue-dim: rgba(0,122,255,0.08);
+                --blue-glow: rgba(0,122,255,0.12);
             }
             nav {
-                background: rgba(245,245,247,0.7);
+                background: rgba(242,242,247,0.72);
                 border-bottom-color: rgba(0,0,0,0.06);
             }
-            .bg-glow .orb { opacity: 0.2; }
-            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(38,51,204,0.2), transparent 70%); }
-            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(89,64,204,0.15), transparent 70%); }
-            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%); }
-            .bg-glow .orb-4 { background: radial-gradient(circle, rgba(89,64,204,0.1), transparent 70%); }
+            .bg-glow .orb { opacity: 0.18; }
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(74,78,156,0.18), transparent 70%); }
+            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(97,102,184,0.12), transparent 70%); }
+            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.1), transparent 70%); }
+            .bg-glow .orb-4 { background: radial-gradient(circle, rgba(56,59,133,0.08), transparent 70%); }
             .hero-icon {
-                box-shadow: 0 8px 40px rgba(38,51,204,0.25), 0 0 60px rgba(89,64,204,0.1);
+                box-shadow: 0 8px 40px rgba(74,78,156,0.2), 0 0 60px rgba(97,102,184,0.08);
             }
             .feature-card {
-                box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
             .feature-card:hover {
-                box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 8px 30px rgba(0,0,0,0.04);
             }
             .highlight {
-                box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
             .feedback-wrapper {
-                box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+                box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
             }
             .form-group input,
             .form-group textarea,
             .form-group select {
                 background: rgba(0,0,0,0.03);
-                border-color: rgba(0,0,0,0.1);
+                border-color: rgba(0,0,0,0.08);
                 color: var(--text);
             }
             .form-group input:focus,
@@ -436,16 +444,19 @@
                 color: #a1a1a6;
             }
             .submit-btn {
-                box-shadow: 0 4px 16px rgba(0,102,204,0.2);
+                box-shadow: 0 4px 16px rgba(0,122,255,0.18);
             }
             .submit-btn:hover {
-                box-shadow: 0 6px 24px rgba(0,102,204,0.3);
+                box-shadow: 0 6px 24px rgba(0,122,255,0.25);
             }
             .badge.primary {
-                box-shadow: 0 4px 16px rgba(0,102,204,0.2);
+                box-shadow: 0 4px 16px rgba(0,122,255,0.18);
             }
             .badge.secondary {
-                box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            }
+            .nav-icon {
+                box-shadow: 0 2px 10px rgba(74,78,156,0.2);
             }
             footer {
                 border-top-color: rgba(0,0,0,0.06);
@@ -471,7 +482,7 @@
                         <path transform="translate(249, 232) scale(1)" d="M109.961 343.555C104.492 343.555 101.367 340.234 101.367 334.18V311.133C45.1172 309.18 14.0625 284.18 4.49219 259.18C2.34375 253.906 1.36719 249.219 1.36719 244.922C1.36719 228.516 12.5 217.188 32.0312 217.188C46.2891 217.188 55.6641 224.414 62.3047 236.914C68.3594 249.219 79.4922 258.398 101.367 260.156V200.391L81.4453 196.289C29.1016 184.766 0 161.133 0 116.992C0 67.1875 42.3828 35.5469 101.367 33.3984V9.375C101.367 3.32031 104.492 0 109.961 0C115.43 0 118.75 3.32031 118.75 9.375V33.5938C169.531 36.5234 201.758 59.7656 211.328 88.2812C212.891 92.5781 213.867 97.2656 213.867 101.953C213.867 116.797 202.539 126.172 184.766 126.172C170.898 126.172 161.133 120.117 153.125 107.422C146.094 94.9219 135.156 86.9141 118.75 84.5703V142.969L138.867 147.266C193.945 159.375 221.68 181.25 221.68 225C221.68 275.586 180.469 307.422 118.75 310.938V334.18C118.75 340.234 115.43 343.555 109.961 343.555ZM65.625 110.547C65.625 124.609 76.9531 132.812 101.367 139.062V84.1797C77.9297 85.9375 65.625 96.2891 65.625 110.547ZM156.445 232.617C156.445 217.578 145.898 210.938 118.75 204.297V259.961C142.773 258.008 156.445 248.242 156.445 232.617Z" fill="white"/>
                     </svg>
                 </div>
-                <span>Track$</span>
+                <span>Track$mart</span>
             </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
@@ -489,8 +500,8 @@
                     <path transform="translate(249, 232) scale(1)" d="M109.961 343.555C104.492 343.555 101.367 340.234 101.367 334.18V311.133C45.1172 309.18 14.0625 284.18 4.49219 259.18C2.34375 253.906 1.36719 249.219 1.36719 244.922C1.36719 228.516 12.5 217.188 32.0312 217.188C46.2891 217.188 55.6641 224.414 62.3047 236.914C68.3594 249.219 79.4922 258.398 101.367 260.156V200.391L81.4453 196.289C29.1016 184.766 0 161.133 0 116.992C0 67.1875 42.3828 35.5469 101.367 33.3984V9.375C101.367 3.32031 104.492 0 109.961 0C115.43 0 118.75 3.32031 118.75 9.375V33.5938C169.531 36.5234 201.758 59.7656 211.328 88.2812C212.891 92.5781 213.867 97.2656 213.867 101.953C213.867 116.797 202.539 126.172 184.766 126.172C170.898 126.172 161.133 120.117 153.125 107.422C146.094 94.9219 135.156 86.9141 118.75 84.5703V142.969L138.867 147.266C193.945 159.375 221.68 181.25 221.68 225C221.68 275.586 180.469 307.422 118.75 310.938V334.18C118.75 340.234 115.43 343.555 109.961 343.555ZM65.625 110.547C65.625 124.609 76.9531 132.812 101.367 139.062V84.1797C77.9297 85.9375 65.625 96.2891 65.625 110.547ZM156.445 232.617C156.445 217.578 145.898 210.938 118.75 204.297V259.961C142.773 258.008 156.445 248.242 156.445 232.617Z" fill="white"/>
                 </svg>
             </div>
-            <h1>Track$</h1>
-            <p class="subtitle">Your finances, your control.</p>
+            <h1>Track$mart</h1>
+            <p class="subtitle">Your finances, your device, your control.</p>
             <p class="desc">AI-powered budgeting with spending insights, heatmaps, and cash flow forecasting. Built entirely with Apple frameworks — zero third-party SDKs.</p>
             <div class="badge-row">
                 <a href="#" class="badge primary">Download on TestFlight</a>
@@ -511,47 +522,65 @@
             <h2>Everything you need to take control</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="chart">&#x1F4CA;</span>
+                    <div class="feature-icon" style="background: #10B981;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><rect x="2" y="13" width="5" height="9" rx="1.5"/><rect x="9.5" y="8" width="5" height="14" rx="1.5"/><rect x="17" y="4" width="5" height="18" rx="1.5"/></svg>
+                    </div>
                     <h3>Smart Budgets</h3>
                     <p>Create custom budgets by category with real-time tracking, visual progress bars, and alerts before you overspend.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="brain">&#x1F9E0;</span>
+                    <div class="feature-icon" style="background: #5F27CD;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 1.5l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/></svg>
+                    </div>
                     <h3>AI Spending Predictions</h3>
                     <p>On-device machine learning analyzes your habits and predicts future spending with confidence scores.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="fire">&#x1F525;</span>
+                    <div class="feature-icon" style="background: #FF6B6B;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2.5C8.5 7 5.5 10 5.5 14.5c0 3.6 2.9 6.5 6.5 6.5s6.5-2.9 6.5-6.5c0-4.5-3-7.5-6.5-12z"/></svg>
+                    </div>
                     <h3>Spending Heatmap</h3>
                     <p>See your spending patterns on a calendar heatmap. Instantly spot high-spend days and trends.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="alert">&#x1F6A8;</span>
+                    <div class="feature-icon" style="background: #FF8C42;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm-1 14v-2h2v2h-2zm0-4V8h2v4h-2z"/></svg>
+                    </div>
                     <h3>Anomaly Detection</h3>
                     <p>Catches unusual transactions, duplicate charges, merchant price shifts, and spending spikes automatically.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="flow">&#x1F30A;</span>
+                    <div class="feature-icon" style="background: #4ECDC4;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M16 3l4 4-4 4V8H4V6h12V3zM8 21l-4-4 4-4v3h12v2H8v3z"/></svg>
+                    </div>
                     <h3>Money Flow Visualization</h3>
                     <p>A Sankey diagram shows exactly how money flows from your accounts to spending categories.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="forecast">&#x26C5;</span>
+                    <div class="feature-icon" style="background: #38B6FF;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </div>
                     <h3>Cash Flow Forecast</h3>
                     <p>Know your safe-to-spend amount for the rest of the month based on recurring income and expenses.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="health">&#x1F4AA;</span>
+                    <div class="feature-icon" style="background: #F59E0B;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
                     <h3>Financial Health Score</h3>
                     <p>Get graded A through F across spending categories with benchmarks based on recommended guidelines.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="document">&#x1F4C4;</span>
+                    <div class="feature-icon" style="background: #A855F7;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 13h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+                    </div>
                     <h3>AI Statement Reader</h3>
                     <p>Import bank statements from PDF, CSV, or OFX files. On-device AI extracts transactions from PDFs automatically.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-emoji" role="img" aria-label="cloud">&#x2601;&#xFE0F;</span>
+                    <div class="feature-icon" style="background: #0EA5E9;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                    </div>
                     <h3>iCloud Sync & Sharing</h3>
                     <p>Syncs across all your devices via iCloud. Share with family through CloudKit — no sign-ups or passwords.</p>
                 </div>
@@ -563,14 +592,23 @@
         <div class="container">
             <div class="highlight-row">
                 <div class="highlight">
+                    <div class="highlight-icon" style="background: #10B981;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+                    </div>
                     <div class="number">0</div>
                     <div class="label">Third-party SDKs</div>
                 </div>
                 <div class="highlight">
+                    <div class="highlight-icon" style="background: #007AFF;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    </div>
                     <div class="number">100%</div>
                     <div class="label">Apple-native frameworks</div>
                 </div>
                 <div class="highlight">
+                    <div class="highlight-icon" style="background: #4A4E9C;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
                     <div class="number">On-device</div>
                     <div class="label">All data processing</div>
                 </div>

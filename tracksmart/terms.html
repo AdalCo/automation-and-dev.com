@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service — Track$</title>
+    <title>Terms of Service — Track$mart</title>
     <style>
         :root {
             --bg: #050510;
@@ -14,8 +14,8 @@
             --text-secondary: #86868b;
             --blue: #007AFF;
             --blue-dim: rgba(0,122,255,0.12);
-            --icon-from: #2633CC;
-            --icon-to: #5940CC;
+            --indigo-from: #4A4E9C;
+            --indigo-to: #2D2F6B;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -40,7 +40,7 @@
         }
         .bg-glow .orb-1 {
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(89,64,204,0.3), transparent 70%);
+            background: radial-gradient(circle, rgba(97,102,184,0.3), transparent 70%);
             top: -150px; left: -150px;
             animation: drift1 22s ease-in-out infinite;
         }
@@ -75,10 +75,10 @@
         }
         .nav-icon {
             width: 32px; height: 32px; border-radius: 8px;
-            background: linear-gradient(180deg, var(--icon-from), var(--icon-to));
+            background: linear-gradient(180deg, var(--indigo-from), var(--indigo-to));
             display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
-            box-shadow: 0 2px 12px rgba(38,51,204,0.3);
+            box-shadow: 0 2px 12px rgba(74,78,156,0.35);
         }
         .nav-logo span { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
         nav a.back {
@@ -94,7 +94,7 @@
         }
         .legal-badge {
             display: inline-block;
-            padding: 4px 12px; border-radius: 6px;
+            padding: 4px 12px; border-radius: 100px;
             background: var(--glass);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -134,7 +134,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 20px;
             padding: 20px 24px;
             margin: 16px 0 24px;
         }
@@ -185,30 +185,30 @@
             footer .container { justify-content: center; text-align: center; }
         }
 
-        /* Light mode */
+        /* Light mode — matches app's iOS grouped background */
         @media (prefers-color-scheme: light) {
             :root {
-                --bg: #f5f5f7;
-                --glass: rgba(255,255,255,0.55);
-                --glass-border: rgba(0,0,0,0.08);
-                --glass-border-hover: rgba(0,0,0,0.15);
+                --bg: #f2f2f7;
+                --glass: rgba(255,255,255,0.82);
+                --glass-border: rgba(0,0,0,0.06);
+                --glass-border-hover: rgba(0,0,0,0.12);
                 --text: #1d1d1f;
                 --text-secondary: #6e6e73;
-                --blue: #0066CC;
-                --blue-dim: rgba(0,102,204,0.1);
+                --blue: #007AFF;
+                --blue-dim: rgba(0,122,255,0.08);
             }
             nav {
-                background: rgba(245,245,247,0.7);
+                background: rgba(242,242,247,0.72);
                 border-bottom-color: rgba(0,0,0,0.06);
             }
             .bg-glow .orb { opacity: 0.15; }
-            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.18), transparent 70%); }
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(97,102,184,0.18), transparent 70%); }
             .bg-glow .orb-2 { background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%); }
             .nav-icon {
-                box-shadow: 0 2px 10px rgba(38,51,204,0.2);
+                box-shadow: 0 2px 10px rgba(74,78,156,0.2);
             }
             .legal .callout {
-                box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
             .legal-badge {
                 box-shadow: 0 1px 4px rgba(0,0,0,0.04);
@@ -238,9 +238,9 @@
                     <svg viewBox="0 0 720 808" width="28" height="28" style="position:absolute;opacity:0.15"><path d="M359.999 807.409C367.041 807.409 378.043 804.972 389.045 799.691C639.463 678.663 720 618.147 720 472.344V166.112C720 124.28 700.635 110.877 663.668 96.6616C612.175 77.1668 447.578 21.9317 396.527 5.68599C384.645 2.0307 372.322 0 359.999 0C347.676 0 335.354 2.43686 323.911 5.68599C272.42 21.1194 107.824 77.5731 56.3324 96.6616C19.8043 110.47 0 124.28 0 166.112V472.344C0 618.147 84.9389 671.759 330.953 799.691C342.395 805.38 352.958 807.409 359.999 807.409Z" fill="white"/></svg>
                     <svg viewBox="0 0 222 344" width="14" height="14" style="position:relative;z-index:1"><path d="M109.961 343.555C104.492 343.555 101.367 340.234 101.367 334.18V311.133C45.1172 309.18 14.0625 284.18 4.49219 259.18C2.34375 253.906 1.36719 249.219 1.36719 244.922C1.36719 228.516 12.5 217.188 32.0312 217.188C46.2891 217.188 55.6641 224.414 62.3047 236.914C68.3594 249.219 79.4922 258.398 101.367 260.156V200.391L81.4453 196.289C29.1016 184.766 0 161.133 0 116.992C0 67.1875 42.3828 35.5469 101.367 33.3984V9.375C101.367 3.32031 104.492 0 109.961 0C115.43 0 118.75 3.32031 118.75 9.375V33.5938C169.531 36.5234 201.758 59.7656 211.328 88.2812C212.891 92.5781 213.867 97.2656 213.867 101.953C213.867 116.797 202.539 126.172 184.766 126.172C170.898 126.172 161.133 120.117 153.125 107.422C146.094 94.9219 135.156 86.9141 118.75 84.5703V142.969L138.867 147.266C193.945 159.375 221.68 181.25 221.68 225C221.68 275.586 180.469 307.422 118.75 310.938V334.18C118.75 340.234 115.43 343.555 109.961 343.555ZM65.625 110.547C65.625 124.609 76.9531 132.812 101.367 139.062V84.1797C77.9297 85.9375 65.625 96.2891 65.625 110.547ZM156.445 232.617C156.445 217.578 145.898 210.938 118.75 204.297V259.961C142.773 258.008 156.445 248.242 156.445 232.617Z" fill="white"/></svg>
                 </div>
-                <span>Track$</span>
+                <span>Track$mart</span>
             </a>
-            <a href="./" class="back">Back to Track$</a>
+            <a href="./" class="back">Back to Track$mart</a>
         </div>
     </nav>
 
@@ -250,19 +250,19 @@
             <h1>Terms of Service</h1>
             <p class="effective">Effective Date: April 4, 2026</p>
 
-            <p>Please read these Terms of Service ("Terms") carefully before using the Track$ mobile application ("the App") operated by Automation &amp; Development ("we," "us," or "our").</p>
+            <p>Please read these Terms of Service ("Terms") carefully before using the Track$mart mobile application ("the App") operated by Automation &amp; Development ("we," "us," or "our").</p>
             <p>By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
 
             <h2>Description of Service</h2>
-            <p>Track$ is a personal budgeting and expense tracking application. The App allows you to manually enter and manage transactions, accounts, budgets, savings goals, and categories. The App is designed to help you organize your personal finances.</p>
+            <p>Track$mart is a personal budgeting and expense tracking application. The App allows you to manually enter and manage transactions, accounts, budgets, savings goals, and categories. The App is designed to help you organize your personal finances.</p>
             <div class="callout">
-                <p><strong>Important:</strong> Track$ is a budgeting tool, not a financial advisor. The App does not provide financial, investment, tax, or legal advice. You should consult a qualified professional for financial decisions.</p>
+                <p><strong>Important:</strong> Track$mart is a budgeting tool, not a financial advisor. The App does not provide financial, investment, tax, or legal advice. You should consult a qualified professional for financial decisions.</p>
             </div>
 
             <h2>Subscriptions</h2>
 
             <h3>Plans and Pricing</h3>
-            <p>Track$ offers optional auto-renewing subscriptions to unlock premium features ("Track$ Pro"):</p>
+            <p>Track$mart offers optional auto-renewing subscriptions to unlock premium features ("Track$mart Pro"):</p>
             <table class="pricing-table">
                 <thead>
                     <tr><th>Plan</th><th>Price</th><th>Billing Cycle</th></tr>
@@ -286,7 +286,7 @@
                 <li>Open <strong>Settings</strong> on your device</li>
                 <li>Tap your <strong>Apple ID</strong> (your name at the top)</li>
                 <li>Tap <strong>Subscriptions</strong></li>
-                <li>Select <strong>Track$ Pro</strong></li>
+                <li>Select <strong>Track$mart Pro</strong></li>
                 <li>Tap <strong>Cancel Subscription</strong></li>
             </ol>
             <p>Canceling a subscription stops future charges but does not provide a refund for the current billing period. You will retain access to Pro features until the end of your current billing period.</p>
@@ -339,7 +339,7 @@
             <p>If you have questions about these Terms, contact us at:</p>
             <p><strong>Email:</strong> <a href="mailto:autoanddev@gmail.com">autoanddev@gmail.com</a></p>
 
-            <p style="margin-top: 40px; font-style: italic; font-size: 0.85rem;">These terms apply to Track$ version 1.0 and later.</p>
+            <p style="margin-top: 40px; font-style: italic; font-size: 0.85rem;">These terms apply to Track$mart version 1.0 and later.</p>
         </div>
     </section>
 
@@ -348,7 +348,7 @@
             <p>&copy; 2026 Automation &amp; Development</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
-                <a href="./">Track$</a>
+                <a href="./">Track$mart</a>
                 <a href="../">All Apps</a>
             </div>
         </div>
