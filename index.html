@@ -24,9 +24,9 @@
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
             background: var(--bg);
             background-image:
-                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(38,51,204,0.18), transparent),
-                radial-gradient(ellipse 60% 60% at 75% 20%, rgba(89,64,204,0.12), transparent),
-                radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.1), transparent);
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(38,51,204,0.08), transparent),
+                radial-gradient(ellipse 60% 60% at 75% 20%, rgba(89,64,204,0.05), transparent),
+                radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.04), transparent);
             background-attachment: fixed;
             color: var(--text);
             line-height: 1.6;
@@ -48,23 +48,23 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.6;
+            opacity: 0.35;
         }
         .bg-glow .orb-1 {
             width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(38,51,204,0.35), transparent 70%);
+            background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
             top: -200px; left: -100px;
             animation: drift1 20s ease-in-out infinite;
         }
         .bg-glow .orb-2 {
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(89,64,204,0.3), transparent 70%);
+            background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
             top: 300px; right: -150px;
             animation: drift2 25s ease-in-out infinite;
         }
         .bg-glow .orb-3 {
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(0,122,255,0.2), transparent 70%);
+            background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%);
             bottom: -100px; left: 30%;
             animation: drift3 22s ease-in-out infinite;
         }
@@ -126,7 +126,7 @@
             margin-bottom: 16px;
         }
         .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--indigo-from), var(--blue), var(--indigo-to));
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -207,18 +207,19 @@
         }
         .app-card .tag {
             display: inline-block;
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 6px;
-            background: var(--blue-dim);
-            color: var(--blue);
-            font-weight: 500;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            font-size: 0.85rem;
+            padding: 10px 24px;
+            border-radius: 100px;
+            background: var(--blue);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            box-shadow: 0 4px 20px rgba(0,122,255,0.3);
         }
         .app-card .tag.soon {
             background: rgba(255,255,255,0.04);
             color: var(--text-secondary);
+            box-shadow: none;
         }
 
         /* Glass footer */
@@ -269,14 +270,14 @@
             }
             body {
                 background-image:
-                    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(89,64,204,0.07), transparent),
-                    radial-gradient(ellipse 60% 60% at 75% 20%, rgba(38,51,204,0.05), transparent),
-                    radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.04), transparent);
+                    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(89,64,204,0.04), transparent),
+                    radial-gradient(ellipse 60% 60% at 75% 20%, rgba(38,51,204,0.03), transparent),
+                    radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.02), transparent);
             }
-            .bg-glow .orb { opacity: 0.18; }
-            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.18), transparent 70%); }
-            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.12), transparent 70%); }
-            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.1), transparent 70%); }
+            .bg-glow .orb { opacity: 0.12; }
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
+            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
+            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.06), transparent 70%); }
             .app-card {
                 box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
@@ -292,8 +293,12 @@
                 color: var(--text-secondary);
                 box-shadow: none;
             }
+            .app-card .tag {
+                box-shadow: 0 4px 16px rgba(0,122,255,0.18);
+            }
             .app-card .tag.soon {
                 background: rgba(0,0,0,0.04);
+                box-shadow: none;
             }
             footer {
                 border-top-color: rgba(0,0,0,0.06);
