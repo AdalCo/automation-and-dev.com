@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation & Development — Apps Built with Care</title>
+    <style>
+        :root {
+            --bg: #050510;
+            --glass: rgba(255,255,255,0.04);
+            --glass-hover: rgba(255,255,255,0.07);
+            --glass-border: rgba(255,255,255,0.08);
+            --glass-border-hover: rgba(255,255,255,0.15);
+            --text: #f5f5f7;
+            --text-secondary: #86868b;
+            --blue: #007AFF;
+            --blue-dim: rgba(0,122,255,0.12);
+            --indigo-from: #2633CC;
+            --indigo-to: #5940CC;
+            --dollar: #8B7AE8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            background-image:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(38,51,204,0.18), transparent),
+                radial-gradient(ellipse 60% 60% at 75% 20%, rgba(89,64,204,0.12), transparent),
+                radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.1), transparent);
+            background-attachment: fixed;
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+        /* Ambient background orbs */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-glow .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.6;
+        }
+        .bg-glow .orb-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(38,51,204,0.35), transparent 70%);
+            top: -200px; left: -100px;
+            animation: drift1 20s ease-in-out infinite;
+        }
+        .bg-glow .orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(89,64,204,0.3), transparent 70%);
+            top: 300px; right: -150px;
+            animation: drift2 25s ease-in-out infinite;
+        }
+        .bg-glow .orb-3 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,122,255,0.2), transparent 70%);
+            bottom: -100px; left: 30%;
+            animation: drift3 22s ease-in-out infinite;
+        }
+        @keyframes drift1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(60px, 40px); }
+        }
+        @keyframes drift2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, -60px); }
+        }
+        @keyframes drift3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        /* Glass nav */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5,5,16,0.6);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: var(--text-secondary); font-weight: 400; }
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 120px 0 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--indigo-from), var(--blue), var(--indigo-to));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 48px;
+        }
+        .dollar { color: var(--dollar); }
+
+        /* Apps section */
+        .apps {
+            padding: 60px 0 120px;
+            position: relative;
+            z-index: 1;
+        }
+        .apps h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Glass cards */
+        .app-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 32px;
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 0 12px rgba(255,255,255,0.06);
+            transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s, background 0.3s;
+            display: block;
+        }
+        .app-card:hover {
+            transform: translateY(-4px);
+            background: var(--glass-hover);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 0 20px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .app-icon {
+            width: 64px; height: 64px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(38,51,204,0.35), 0 0 40px rgba(89,64,204,0.15);
+        }
+        .app-icon img { width: 100%; height: 100%; display: block; }
+        .app-icon.placeholder {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--glass-border);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary); font-size: 1.4rem;
+            box-shadow: none;
+            overflow: visible;
+        }
+        .app-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .app-card .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .app-card .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: var(--blue-dim);
+            color: var(--blue);
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .app-card .tag.soon {
+            background: rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+        }
+
+        /* Glass footer */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover { color: var(--text); }
+
+        @media (max-width: 640px) {
+            .hero { padding: 80px 0 60px; }
+            .app-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Light mode */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f2f2f7;
+                --glass: rgba(255,255,255,0.82);
+                --glass-hover: rgba(255,255,255,0.92);
+                --glass-border: rgba(0,0,0,0.06);
+                --glass-border-hover: rgba(0,0,0,0.12);
+                --text: #1d1d1f;
+                --text-secondary: #6e6e73;
+                --blue: #007AFF;
+                --blue-dim: rgba(0,122,255,0.08);
+                --indigo-from: #5940CC;
+                --indigo-to: #2633CC;
+                --dollar: #4A3AA0;
+            }
+            nav {
+                background: rgba(242,242,247,0.72);
+                border-bottom-color: rgba(0,0,0,0.06);
+            }
+            body {
+                background-image:
+                    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(89,64,204,0.07), transparent),
+                    radial-gradient(ellipse 60% 60% at 75% 20%, rgba(38,51,204,0.05), transparent),
+                    radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.04), transparent);
+            }
+            .bg-glow .orb { opacity: 0.18; }
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.18), transparent 70%); }
+            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.12), transparent 70%); }
+            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.1), transparent 70%); }
+            .app-card {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            }
+            .app-card:hover {
+                box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(0,122,255,0.04);
+            }
+            .app-icon {
+                box-shadow: 0 4px 16px rgba(89,64,204,0.2);
+            }
+            .app-icon.placeholder {
+                background: rgba(0,0,0,0.04);
+                border-color: rgba(0,0,0,0.08);
+                color: var(--text-secondary);
+                box-shadow: none;
+            }
+            .app-card .tag.soon {
+                background: rgba(0,0,0,0.04);
+            }
+            footer {
+                border-top-color: rgba(0,0,0,0.06);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating gradient orbs -->
+    <div class="bg-glow">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">Automation & Development</div>
+            <a href="mailto:autoanddev@gmail.com">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Apps built with <span class="gradient">care</span></h1>
+            <p>Privacy-first iOS apps crafted with Apple-native frameworks. No third-party SDKs. Your data stays yours.</p>
+        </div>
+    </section>
+
+    <section class="apps">
+        <div class="container">
+            <h2>Apps</h2>
+            <div class="app-grid">
+                <a href="tracksmart/" class="app-card">
+                    <div class="app-icon">
+                        <picture>
+                            <source srcset="tracksmart/icon-light.png" media="(prefers-color-scheme: light)">
+                            <img src="tracksmart/icon-dark.png" alt="TrackSmart" width="64" height="64">
+                        </picture>
+                    </div>
+                    <h3>Track<span class="dollar">$</span>mart</h3>
+                    <p class="subtitle">Your finances, your device, your control. AI-powered budgeting with spending insights, heatmaps, and cash flow forecasting.</p>
+                    <span class="tag">Available on TestFlight</span>
+                </a>
+                <div class="app-card" style="opacity: 0.5; cursor: default;">
+                    <div class="app-icon placeholder">?</div>
+                    <h3>Coming Soon</h3>
+                    <p class="subtitle">More privacy-first apps are in the works. Stay tuned.</p>
+                    <span class="tag soon">In Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Automation & Development. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
