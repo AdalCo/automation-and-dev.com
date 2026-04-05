@@ -5,53 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track$mart — Your finances, your control</title>
     <meta name="description" content="Privacy-first budgeting app with AI-powered insights, spending heatmaps, and cash flow forecasting. No third-party SDKs. Your data stays on your device.">
+    <link rel="stylesheet" href="shared.css">
     <style>
-        :root {
-            --bg: #050510;
-            --glass: rgba(255,255,255,0.04);
-            --glass-hover: rgba(255,255,255,0.07);
-            --glass-border: rgba(255,255,255,0.08);
-            --glass-border-hover: rgba(255,255,255,0.15);
-            --glass-strong: rgba(255,255,255,0.06);
-            --text: #f5f5f7;
-            --text-secondary: #86868b;
-            --blue: #007AFF;
-            --blue-dim: rgba(0,122,255,0.12);
-            --blue-glow: rgba(0,122,255,0.25);
-            --indigo-from: #2633CC;
-            --indigo-to: #5940CC;
-            --dollar: #8B7AE8;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-            background: var(--bg);
-            background-image:
-                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(38,51,204,0.08), transparent),
-                radial-gradient(ellipse 60% 60% at 75% 20%, rgba(89,64,204,0.05), transparent),
-                radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.04), transparent);
-            background-attachment: fixed;
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-
-        /* Ambient background — indigo-shifted to match app PRO palette */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .bg-glow .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.35;
-        }
+        /* Orb configuration */
         .bg-glow .orb-1 {
             width: 700px; height: 700px;
             background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
@@ -76,47 +32,7 @@
             top: 50%; left: 60%;
             animation: drift1 18s ease-in-out infinite reverse;
         }
-        @keyframes drift1 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(60px, 40px); }
-        }
-        @keyframes drift2 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-40px, -60px); }
-        }
-        @keyframes drift3 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -30px); }
-        }
-
-        /* Glass nav */
-        nav {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(5,5,16,0.6);
-        }
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-logo {
-            display: flex; align-items: center; gap: 10px;
-            text-decoration: none; color: var(--text);
-        }
-        .nav-icon {
-            width: 32px; height: 32px; border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(38,51,204,0.35);
-        }
-        .nav-icon img { width: 100%; height: 100%; display: block; }
-        .nav-logo span { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
-        .dollar { color: var(--dollar); }
+        /* Hero dollar animation */
         .hero h1 .dollar {
             display: inline-block;
             animation: dollarPulse 1.5s ease-in-out 1s forwards;
@@ -125,13 +41,6 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.15); }
         }
-        .nav-links { display: flex; gap: 28px; align-items: center; }
-        .nav-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.9rem; transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--text); }
-
         /* Hero */
         .hero {
             text-align: center;
@@ -178,19 +87,13 @@
         }
         .badge:hover { transform: translateY(-2px); }
         .badge.primary {
-            background: var(--blue);
+            background: var(--indigo-to);
             color: #fff;
-            box-shadow: 0 4px 20px rgba(0,122,255,0.3);
         }
-        .badge.primary:hover { box-shadow: 0 8px 30px rgba(0,122,255,0.4); }
         .badge.secondary {
-            background: var(--glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            color: var(--text);
-            border: 1px solid var(--glass-border);
+            background: var(--indigo-to);
+            color: #fff;
         }
-        .badge.secondary:hover { border-color: var(--glass-border-hover); }
 
         /* Privacy pill */
         .privacy-banner {
@@ -467,27 +370,6 @@
             color: #EF4444;
         }
 
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--glass-border);
-            padding: 40px 0;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        footer .container {
-            display: flex; justify-content: space-between;
-            align-items: center; flex-wrap: wrap; gap: 16px;
-        }
-        footer p { color: var(--text-secondary); font-size: 0.85rem; }
-        .footer-links { display: flex; gap: 24px; }
-        .footer-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.85rem; transition: color 0.2s;
-        }
-        .footer-links a:hover { color: var(--text); }
-
         @media (max-width: 640px) {
             .hero { padding: 60px 0 50px; }
             .hero-icon { width: 72px; height: 72px; border-radius: 18px; }
@@ -495,38 +377,10 @@
             .highlight-row { grid-template-columns: 1fr; }
             .feedback-wrapper { padding: 28px; }
             .nav-links .back { display: none; }
-            footer .container { justify-content: center; text-align: center; }
         }
 
-        /* Light mode — matches app's iOS grouped background aesthetic */
+        /* Light mode — page-specific overrides */
         @media (prefers-color-scheme: light) {
-            :root {
-                --bg: #f2f2f7;
-                --glass: rgba(255,255,255,0.82);
-                --glass-hover: rgba(255,255,255,0.92);
-                --glass-border: rgba(0,0,0,0.06);
-                --glass-border-hover: rgba(0,0,0,0.12);
-                --glass-strong: rgba(255,255,255,0.88);
-                --text: #1d1d1f;
-                --text-secondary: #6e6e73;
-                --blue: #007AFF;
-                --blue-dim: rgba(0,122,255,0.08);
-                --blue-glow: rgba(0,122,255,0.12);
-                --indigo-from: #5940CC;
-                --indigo-to: #2633CC;
-                --dollar: #4A3AA0;
-            }
-            body {
-                background-image:
-                    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(89,64,204,0.04), transparent),
-                    radial-gradient(ellipse 60% 60% at 75% 20%, rgba(38,51,204,0.03), transparent),
-                    radial-gradient(ellipse 50% 70% at 50% 90%, rgba(0,122,255,0.02), transparent);
-            }
-            nav {
-                background: rgba(242,242,247,0.72);
-                border-bottom-color: rgba(0,0,0,0.06);
-            }
-            .bg-glow .orb { opacity: 0.12; }
             .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
             .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
             .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.06), transparent 70%); }
@@ -572,18 +426,6 @@
             }
             .commitment-shield {
                 box-shadow: 0 4px 16px rgba(89,64,204,0.15);
-            }
-            .badge.primary {
-                box-shadow: 0 4px 16px rgba(0,122,255,0.18);
-            }
-            .badge.secondary {
-                box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-            }
-            .nav-icon {
-                box-shadow: 0 2px 10px rgba(89,64,204,0.2);
-            }
-            footer {
-                border-top-color: rgba(0,0,0,0.06);
             }
         }
     </style>

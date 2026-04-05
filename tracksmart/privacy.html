@@ -4,43 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — Track$mart</title>
+    <link rel="stylesheet" href="shared.css">
     <style>
-        :root {
-            --bg: #050510;
-            --glass: rgba(255,255,255,0.04);
-            --glass-border: rgba(255,255,255,0.08);
-            --glass-border-hover: rgba(255,255,255,0.15);
-            --text: #f5f5f7;
-            --text-secondary: #86868b;
-            --blue: #007AFF;
-            --blue-dim: rgba(0,122,255,0.12);
-            --indigo-from: #4A4E9C;
-            --indigo-to: #2D2F6B;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        /* Narrower container for legal pages */
+        .container { max-width: 720px; }
+        body { line-height: 1.7; }
 
-        /* Ambient background */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none; z-index: 0; overflow: hidden;
-        }
-        .bg-glow .orb {
-            position: absolute; border-radius: 50%;
-            filter: blur(120px); opacity: 0.35;
-        }
+        /* Orb configuration */
         .bg-glow .orb-1 {
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(74,78,156,0.3), transparent 70%);
+            background: radial-gradient(circle, rgba(38,51,204,0.3), transparent 70%);
             top: -200px; right: -100px;
             animation: drift1 20s ease-in-out infinite;
         }
@@ -50,67 +23,8 @@
             bottom: 100px; left: -100px;
             animation: drift2 25s ease-in-out infinite;
         }
-        @keyframes drift1 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-40px, 30px); }
-        }
-        @keyframes drift2 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -40px); }
-        }
 
-        /* Glass nav */
-        nav {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(5,5,16,0.6);
-        }
-        nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo {
-            display: flex; align-items: center; gap: 10px;
-            text-decoration: none; color: var(--text);
-        }
-        .nav-icon {
-            width: 32px; height: 32px; border-radius: 8px;
-            background: linear-gradient(180deg, var(--indigo-from), var(--indigo-to));
-            display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-            box-shadow: 0 2px 12px rgba(74,78,156,0.35);
-        }
-        .nav-logo span { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; }
-        nav a.back {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.9rem; transition: color 0.2s;
-        }
-        nav a.back:hover { color: var(--text); }
-
-        /* Legal content */
-        .legal {
-            padding: 60px 0 100px;
-            position: relative; z-index: 1;
-        }
-        .legal-badge {
-            display: inline-block;
-            padding: 4px 12px; border-radius: 100px;
-            background: var(--glass);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--glass-border);
-            color: var(--blue);
-            font-size: 0.8rem; font-weight: 500;
-            margin-bottom: 16px;
-        }
-        .legal h1 {
-            font-size: 2.2rem; font-weight: 700;
-            letter-spacing: -0.03em; margin-bottom: 8px;
-        }
-        .legal .effective {
-            color: var(--text-secondary);
-            font-size: 0.9rem; margin-bottom: 40px;
-        }
+        /* Page-specific: summary box */
         .legal .summary-box {
             background: var(--glass);
             backdrop-filter: blur(20px);
@@ -132,77 +46,13 @@
             position: absolute; left: 0;
             color: var(--blue); font-weight: 600;
         }
-        .legal h2 {
-            font-size: 1.3rem; font-weight: 600;
-            letter-spacing: -0.01em;
-            margin: 36px 0 12px; padding-top: 8px;
-        }
-        .legal p, .legal li {
-            color: var(--text-secondary);
-            font-size: 0.95rem; margin-bottom: 12px;
-        }
-        .legal ul { padding-left: 20px; margin-bottom: 12px; }
-        .legal li { margin-bottom: 6px; }
-        .legal strong { color: var(--text); }
-        .legal a { color: var(--blue); text-decoration: none; }
-        .legal a:hover { text-decoration: underline; }
 
-        /* Glass footer */
-        footer {
-            border-top: 1px solid var(--glass-border);
-            padding: 40px 0;
-            position: relative; z-index: 1;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        footer .container {
-            display: flex; justify-content: space-between;
-            align-items: center; flex-wrap: wrap; gap: 16px;
-        }
-        footer p { color: var(--text-secondary); font-size: 0.85rem; }
-        .footer-links { display: flex; gap: 24px; }
-        .footer-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.85rem; transition: color 0.2s;
-        }
-        .footer-links a:hover { color: var(--text); }
-
-        @media (max-width: 640px) {
-            .legal { padding: 40px 0 60px; }
-            .legal h1 { font-size: 1.8rem; }
-            footer .container { justify-content: center; text-align: center; }
-        }
-
-        /* Light mode — matches app's iOS grouped background */
+        /* Light mode — page-specific overrides */
         @media (prefers-color-scheme: light) {
-            :root {
-                --bg: #f2f2f7;
-                --glass: rgba(255,255,255,0.82);
-                --glass-border: rgba(0,0,0,0.06);
-                --glass-border-hover: rgba(0,0,0,0.12);
-                --text: #1d1d1f;
-                --text-secondary: #6e6e73;
-                --blue: #007AFF;
-                --blue-dim: rgba(0,122,255,0.08);
-            }
-            nav {
-                background: rgba(242,242,247,0.72);
-                border-bottom-color: rgba(0,0,0,0.06);
-            }
-            .bg-glow .orb { opacity: 0.15; }
-            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(74,78,156,0.18), transparent 70%); }
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.18), transparent 70%); }
             .bg-glow .orb-2 { background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%); }
-            .nav-icon {
-                box-shadow: 0 2px 10px rgba(74,78,156,0.2);
-            }
             .summary-box {
                 box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
-            }
-            .legal-badge {
-                box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-            }
-            footer {
-                border-top-color: rgba(0,0,0,0.06);
             }
         }
     </style>
@@ -217,12 +67,14 @@
         <div class="container">
             <a href="./" class="nav-logo">
                 <div class="nav-icon">
-                    <svg viewBox="0 0 720 808" width="28" height="28" style="position:absolute;opacity:0.15"><path d="M359.999 807.409C367.041 807.409 378.043 804.972 389.045 799.691C639.463 678.663 720 618.147 720 472.344V166.112C720 124.28 700.635 110.877 663.668 96.6616C612.175 77.1668 447.578 21.9317 396.527 5.68599C384.645 2.0307 372.322 0 359.999 0C347.676 0 335.354 2.43686 323.911 5.68599C272.42 21.1194 107.824 77.5731 56.3324 96.6616C19.8043 110.47 0 124.28 0 166.112V472.344C0 618.147 84.9389 671.759 330.953 799.691C342.395 805.38 352.958 807.409 359.999 807.409Z" fill="white"/></svg>
-                    <svg viewBox="0 0 222 344" width="14" height="14" style="position:relative;z-index:1"><path d="M109.961 343.555C104.492 343.555 101.367 340.234 101.367 334.18V311.133C45.1172 309.18 14.0625 284.18 4.49219 259.18C2.34375 253.906 1.36719 249.219 1.36719 244.922C1.36719 228.516 12.5 217.188 32.0312 217.188C46.2891 217.188 55.6641 224.414 62.3047 236.914C68.3594 249.219 79.4922 258.398 101.367 260.156V200.391L81.4453 196.289C29.1016 184.766 0 161.133 0 116.992C0 67.1875 42.3828 35.5469 101.367 33.3984V9.375C101.367 3.32031 104.492 0 109.961 0C115.43 0 118.75 3.32031 118.75 9.375V33.5938C169.531 36.5234 201.758 59.7656 211.328 88.2812C212.891 92.5781 213.867 97.2656 213.867 101.953C213.867 116.797 202.539 126.172 184.766 126.172C170.898 126.172 161.133 120.117 153.125 107.422C146.094 94.9219 135.156 86.9141 118.75 84.5703V142.969L138.867 147.266C193.945 159.375 221.68 181.25 221.68 225C221.68 275.586 180.469 307.422 118.75 310.938V334.18C118.75 340.234 115.43 343.555 109.961 343.555ZM65.625 110.547C65.625 124.609 76.9531 132.812 101.367 139.062V84.1797C77.9297 85.9375 65.625 96.2891 65.625 110.547ZM156.445 232.617C156.445 217.578 145.898 210.938 118.75 204.297V259.961C142.773 258.008 156.445 248.242 156.445 232.617Z" fill="white"/></svg>
+                    <picture>
+                        <source srcset="icon-light.png" media="(prefers-color-scheme: light)">
+                        <img src="icon-dark.png" alt="TrackSmart" width="32" height="32">
+                    </picture>
                 </div>
-                <span>Track$mart</span>
+                <span>Track<span class="dollar">$</span>mart</span>
             </a>
-            <a href="./" class="back">Back to Track$mart</a>
+            <a href="./" class="back">Back to Track<span class="dollar">$</span>mart</a>
         </div>
     </nav>
 
