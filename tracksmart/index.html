@@ -280,6 +280,89 @@
             margin-top: 4px;
         }
 
+        /* Privacy Commitment */
+        .commitment {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .commitment-card {
+            background: var(--glass-strong);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 48px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 16px 64px rgba(0,0,0,0.2);
+        }
+        .commitment-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--indigo-from), var(--blue), var(--indigo-from));
+        }
+        .commitment-header {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 12px;
+        }
+        .commitment-shield {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(74,78,156,0.3);
+            flex-shrink: 0;
+        }
+        .commitment h2 {
+            font-size: 1.8rem; font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .commitment .intro {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 560px;
+        }
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .commitment-item {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .commitment-item:hover {
+            border-color: var(--glass-border-hover);
+            background: var(--glass-hover);
+        }
+        .commitment-item-icon {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px;
+        }
+        .commitment-item h3 {
+            font-size: 1rem; font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .commitment-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        @media (max-width: 640px) {
+            .commitment-grid { grid-template-columns: 1fr; }
+            .commitment-card { padding: 28px; }
+        }
+
         /* Feedback */
         .feedback {
             padding: 80px 0;
@@ -442,6 +525,15 @@
             .form-group input::placeholder,
             .form-group textarea::placeholder {
                 color: #a1a1a6;
+            }
+            .commitment-card {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
+            }
+            .commitment-item {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            }
+            .commitment-shield {
+                box-shadow: 0 4px 16px rgba(74,78,156,0.15);
             }
             .submit-btn {
                 box-shadow: 0 4px 16px rgba(0,122,255,0.18);
@@ -611,6 +703,50 @@
                     </div>
                     <div class="number">On-device</div>
                     <div class="label">All data processing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="commitment">
+        <div class="container">
+            <div class="commitment-card">
+                <div class="commitment-header">
+                    <div class="commitment-shield">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+                    </div>
+                    <h2>Your data is yours. Period.</h2>
+                </div>
+                <p class="intro">Track$mart was designed from day one with a simple principle: your financial data never leaves your device unless you choose to sync it yourself via iCloud.</p>
+                <div class="commitment-grid">
+                    <div class="commitment-item">
+                        <div class="commitment-item-icon" style="background: #10B981;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                        </div>
+                        <h3>We never sell your data</h3>
+                        <p>No ads, no analytics brokers, no data harvesting. Your finances are nobody else's business.</p>
+                    </div>
+                    <div class="commitment-item">
+                        <div class="commitment-item-icon" style="background: #4A4E9C;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 13H4v-2h16v2zm0-6H4v2h16V7zM4 17h16v-2H4v2z" opacity="0"/><path d="M4 8h16V6H4v2zm0 5h16v-2H4v2zm0 5h16v-2H4v2z" opacity="0"/><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></svg>
+                        </div>
+                        <h3>No servers. No cloud processing.</h3>
+                        <p>All AI analysis runs on your device using Apple's Core ML. Nothing is sent to external servers.</p>
+                    </div>
+                    <div class="commitment-item">
+                        <div class="commitment-item-icon" style="background: #FF6B6B;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                        </div>
+                        <h3>Zero third-party code</h3>
+                        <p>Built entirely with Apple-native frameworks. No Firebase, no Mixpanel, no Facebook SDK — nothing.</p>
+                    </div>
+                    <div class="commitment-item">
+                        <div class="commitment-item-icon" style="background: #38B6FF;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3>No account required</h3>
+                        <p>No sign-ups, no email verification, no passwords. Just download and start tracking.</p>
+                    </div>
                 </div>
             </div>
         </div>
