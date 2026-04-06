@@ -36,17 +36,28 @@
             padding: 24px 28px;
             margin-bottom: 40px;
         }
-        .legal .summary-box ul { list-style: none; padding: 0; }
-        .legal .summary-box li {
-            padding: 6px 0; padding-left: 24px;
-            position: relative;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .legal .summary-item {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 10px 0;
         }
-        .legal .summary-box li::before {
-            content: '\2713';
-            position: absolute; left: 0;
-            color: var(--blue); font-weight: 600;
+        .legal .summary-item:first-child { padding-top: 0; }
+        .legal .summary-item:last-child { padding-bottom: 0; }
+        .legal .summary-icon {
+            width: 32px; height: 32px; min-width: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .legal .summary-item div:last-child { flex: 1; }
+        .legal .summary-item strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 1px;
+        }
+        .legal .summary-item span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
         }
 
         /* Light mode — page-specific overrides */
@@ -87,12 +98,36 @@
             <p class="effective">Effective Date: April 4, 2026</p>
 
             <div class="summary-box">
-                <ul>
-                    <li>Your data stays on your device and in your private iCloud account</li>
-                    <li>We do not collect, store, or have access to any of your data</li>
-                    <li>We do not use third-party analytics, advertising, or tracking SDKs</li>
-                    <li>The App is built entirely with Apple first-party frameworks</li>
-                </ul>
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #007AFF;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <div><strong>On-Device Storage</strong><span>All financial data is stored locally on your device.</span></div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #32ADE6;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <div><strong>iCloud Sync</strong><span>When enabled, data syncs via your private iCloud container. Only you can access it.</span></div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #AF52DE;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    </div>
+                    <div><strong>No Tracking</strong><span>No analytics, no behavior tracking, no data shared with third parties.</span></div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #FF9500;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a16 16 0 0 1 4 10 16 16 0 0 1-4 10 16 16 0 0 1-4-10A16 16 0 0 1 12 2z"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+                    </div>
+                    <div><strong>No External Servers</strong><span>Your data never touches any server other than your own iCloud account.</span></div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #5856D6;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <div><strong>No Third-Party SDKs</strong><span>Built entirely with Apple frameworks. No external analytics or ad networks.</span></div>
+                </div>
             </div>
 
             <p>Automation &amp; Development ("we," "us," or "our") built the Track$mart app ("the App") as a personal budgeting tool. This Privacy Policy explains how we handle your information.</p>
@@ -109,33 +144,17 @@
                 <li>Categorization and account rules</li>
                 <li>App preferences and settings</li>
             </ul>
-            <p>All of this data is entered by you manually. The App does not automatically collect data from your bank, email, or other sources unless you explicitly enable bank sync through Apple's FinanceKit framework.</p>
+            <p>All of this data is entered by you manually. The App does not automatically collect data from your bank, email, or other sources.</p>
 
-            <h2>How Your Data Is Stored</h2>
-            <ul>
-                <li><strong>On-device:</strong> All data is stored locally on your device using Apple's SwiftData framework</li>
-                <li><strong>iCloud sync:</strong> If you have iCloud enabled, your data is synced across your devices using Apple's CloudKit. This data is stored in your private iCloud account and is not accessible to us or any third party</li>
-                <li><strong>No servers:</strong> We do not operate any servers. Your data never passes through our infrastructure</li>
-            </ul>
-
-            <h2>Third-Party Services</h2>
-            <p>The App does not integrate any third-party services, SDKs, or frameworks. Everything is built using Apple first-party technologies:</p>
+            <h2>Technologies Used</h2>
+            <p>The App is built entirely using Apple first-party frameworks. No third-party services, SDKs, or libraries are integrated:</p>
             <ul>
                 <li>SwiftData (local storage)</li>
                 <li>CloudKit (iCloud sync)</li>
-                <li>StoreKit 2 (in-app subscriptions, processed by Apple)</li>
-                <li>FinanceKit (optional bank sync, processed by Apple)</li>
-                <li>UserNotifications (local notifications only)</li>
+                <li>StoreKit 2 (in-app subscriptions, processed entirely by Apple)</li>
+                <li>UserNotifications (local notifications only, no remote push)</li>
+                <li>LocalAuthentication (Face ID / Touch ID — we never access or store biometric data)</li>
             </ul>
-
-            <h2>Biometric Authentication</h2>
-            <p>The App may use Face ID or Touch ID to protect access to your data. Biometric authentication is handled entirely by Apple's LocalAuthentication framework. We do not access, store, or process any biometric data.</p>
-
-            <h2>Notifications</h2>
-            <p>The App uses local notifications only (e.g., budget alerts, savings goal reminders). These notifications are generated on your device. We do not send push notifications from a remote server.</p>
-
-            <h2>In-App Purchases</h2>
-            <p>Subscription purchases are processed entirely by Apple through the App Store. We do not collect or have access to your payment information, Apple ID, or billing details.</p>
 
             <h2>Data Sharing</h2>
             <p>We do not share, sell, rent, or disclose any of your data to third parties. Period.</p>

@@ -26,6 +26,40 @@
             animation: drift2 20s ease-in-out infinite;
         }
 
+        /* Page-specific: trust summary */
+        .legal .summary-box {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+        .legal .summary-item {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 10px 0;
+        }
+        .legal .summary-item:first-child { padding-top: 0; }
+        .legal .summary-item:last-child { padding-bottom: 0; }
+        .legal .summary-icon {
+            width: 32px; height: 32px; min-width: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .legal .summary-item div:last-child { flex: 1; }
+        .legal .summary-item strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 1px;
+        }
+        .legal .summary-item span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
         /* Page-specific: h3, callout, pricing table */
         .legal h3 {
             font-size: 1.05rem; font-weight: 600;
@@ -65,6 +99,9 @@
         @media (prefers-color-scheme: light) {
             .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.18), transparent 70%); }
             .bg-glow .orb-2 { background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%); }
+            .summary-box {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            }
             .legal .callout {
                 box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
@@ -107,6 +144,27 @@
             <p>Please read these Terms of Service ("Terms") carefully before using the Track$mart mobile application ("the App") operated by Automation &amp; Development ("we," "us," or "our").</p>
             <p>By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
 
+            <div class="summary-box">
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #007AFF;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <div><strong>On-Device Storage</strong><span>All data is stored locally on your device and optionally in your private iCloud account.</span></div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #FF9500;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a16 16 0 0 1 4 10 16 16 0 0 1-4 10 16 16 0 0 1-4-10A16 16 0 0 1 12 2z"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+                    </div>
+                    <div><strong>No External Servers</strong><span>We do not operate any servers. Your data never passes through our infrastructure.</span></div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon" style="background: #30B0C7;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" y1="11" x2="22" y2="16"/><line x1="22" y1="11" x2="17" y2="16"/></svg>
+                    </div>
+                    <div><strong>No Account Required</strong><span>No sign-up or personal information needed. See our <a href="privacy.html">Privacy Policy</a> for full details.</span></div>
+                </div>
+            </div>
+
             <h2>Description of Service</h2>
             <p>Track$mart is a personal budgeting and expense tracking application. The App allows you to manually enter and manage transactions, accounts, budgets, savings goals, and categories. The App is designed to help you organize your personal finances.</p>
             <div class="callout">
@@ -148,30 +206,16 @@
             <h3>Refunds</h3>
             <p>All purchases are processed by Apple. To request a refund, visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. We do not process payments or refunds directly.</p>
 
-            <h2>Your Data</h2>
-            <p>All data you enter into the App is stored locally on your device and optionally synced to your private iCloud account. We do not have access to your data. You are responsible for maintaining backups of your data. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
-
-            <h2>Acceptable Use</h2>
-            <p>You agree not to:</p>
+            <h2>Use &amp; Ownership</h2>
+            <p>The App and its original content, features, and functionality are owned by Automation &amp; Development and are protected by copyright and other intellectual property laws. You agree not to:</p>
             <ul>
                 <li>Use the App for any unlawful purpose</li>
                 <li>Attempt to reverse-engineer, decompile, or disassemble the App</li>
                 <li>Redistribute, sublicense, or resell the App or any part of it</li>
             </ul>
 
-            <h2>Intellectual Property</h2>
-            <p>The App and its original content, features, and functionality are owned by Automation &amp; Development and are protected by copyright and other intellectual property laws.</p>
-
-            <h2>Disclaimer of Warranties</h2>
-            <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that:</p>
-            <ul>
-                <li>The App will meet your specific requirements</li>
-                <li>The App will be uninterrupted, timely, secure, or error-free</li>
-                <li>The results obtained from using the App will be accurate or reliable</li>
-                <li>Financial calculations or budgets will be free from errors</li>
-            </ul>
-
-            <h2>Limitation of Liability</h2>
+            <h2>Disclaimers &amp; Liability</h2>
+            <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that the App will be uninterrupted, error-free, or that financial calculations will be free from errors.</p>
             <p>To the maximum extent permitted by applicable law, Automation &amp; Development shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data, loss of profits, or financial losses arising from:</p>
             <ul>
                 <li>Your use of or inability to use the App</li>
@@ -183,9 +227,6 @@
             <h2>Changes to These Terms</h2>
             <p>We reserve the right to update these Terms at any time. Changes will be posted on this page with an updated effective date. Your continued use of the App after changes are posted constitutes acceptance of the revised Terms.</p>
 
-            <h2>Apple's Standard EULA</h2>
-            <p>In addition to these Terms, your use of the App is also governed by <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple's Standard Licensed Application End User License Agreement (EULA)</a>.</p>
-
             <h2>Governing Law</h2>
             <p>These Terms shall be governed by and construed in accordance with the laws of the United States, without regard to conflict of law provisions.</p>
 
@@ -193,7 +234,7 @@
             <p>If you have questions about these Terms, contact us at:</p>
             <p><strong>Email:</strong> <a href="mailto:autoanddev@gmail.com">autoanddev@gmail.com</a></p>
 
-            <p style="margin-top: 40px; font-style: italic; font-size: 0.85rem;">These terms apply to Track$mart version 1.0 and later.</p>
+            <p style="margin-top: 40px; font-style: italic; font-size: 0.85rem;">These terms apply to Track$mart version 1.0 and later. Your use of the App is also governed by <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple's Standard EULA</a>.</p>
         </div>
     </section>
 
