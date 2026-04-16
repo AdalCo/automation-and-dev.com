@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service — Track$mart</title>
+    <meta name="description" content="Track$mart Terms of Service. Subscription plans, usage terms, and disclaimers for the Track$mart budgeting app.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="shared.css">
@@ -18,12 +19,16 @@
             background: radial-gradient(circle, rgba(38,51,204,0.3), transparent 70%);
             top: -150px; left: -150px;
             animation: drift1 22s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
         }
         .bg-glow .orb-2 {
             width: 400px; height: 400px;
             background: radial-gradient(circle, rgba(0,122,255,0.2), transparent 70%);
             bottom: 50px; right: -100px;
             animation: drift2 20s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
         }
 
         /* Page-specific: trust summary */
@@ -99,7 +104,7 @@
         @media (prefers-color-scheme: light) {
             .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.18), transparent 70%); }
             .bg-glow .orb-2 { background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%); }
-            .summary-box {
+            .legal .summary-box {
                 box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
             .legal .callout {
@@ -111,6 +116,14 @@
             .pricing-table td {
                 border-bottom-color: rgba(0,0,0,0.06);
             }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .bg-glow { display: none; }
         }
     </style>
 </head>

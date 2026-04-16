@@ -3,36 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track$mart — Your finances, your control</title>
-    <meta name="description" content="Privacy-first budgeting app with AI-powered insights, spending heatmaps, and cash flow forecasting. No third-party SDKs. Your data stays on your device.">
+    <title>Track$mart — Your finances, your device, your control</title>
+    <meta name="description" content="Build better spending habits with AI-powered insights, smart budgets, and cash flow forecasting — all on-device. Your data never leaves your phone.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* Orb configuration */
+        /* Orb configuration — GPU-promoted with will-change & contain */
         .bg-glow .orb-1 {
             width: 700px; height: 700px;
             background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
             top: -250px; left: -150px;
             animation: drift1 20s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
         }
         .bg-glow .orb-2 {
             width: 500px; height: 500px;
             background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
             top: 400px; right: -200px;
             animation: drift2 25s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
         }
         .bg-glow .orb-3 {
             width: 450px; height: 450px;
             background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%);
             bottom: 200px; left: 20%;
             animation: drift3 22s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
         }
         .bg-glow .orb-4 {
             width: 350px; height: 350px;
             background: radial-gradient(circle, rgba(50,46,180,0.15), transparent 70%);
             top: 50%; left: 60%;
             animation: drift1 18s ease-in-out infinite reverse;
+            will-change: transform;
+            contain: strict;
         }
         /* Hero dollar animation */
         .hero h1 .dollar {
@@ -46,7 +54,7 @@
         /* Hero */
         .hero {
             text-align: center;
-            padding: 100px 0 80px;
+            padding: 100px 0 40px;
             position: relative;
             z-index: 1;
         }
@@ -96,6 +104,70 @@
             background: var(--indigo-to);
             color: #fff;
         }
+        .hero .pricing-hint {
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Hero floating phone */
+        .hero-phone {
+            margin: 48px auto 0;
+            position: relative;
+            width: 260px;
+        }
+        .hero-phone-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(38,51,204,0.3), rgba(89,64,204,0.15) 50%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-phone picture {
+            display: block;
+            position: relative;
+            z-index: 1;
+            border-radius: 44px;
+            overflow: hidden;
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
+            animation: heroFloat 4s ease-in-out infinite;
+            will-change: transform;
+        }
+        .hero-phone img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Shared glass card base — blur only on strong cards to reduce compositing layers */
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+        }
+        .glass-card-strong {
+            background: var(--glass-strong);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: 0 0 12px rgba(255,255,255,0.06), 0 16px 64px rgba(0,0,0,0.2);
+        }
+
+        /* Shared circle icon base */
+        .circle-icon {
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
 
         /* Privacy pill */
         .privacy-banner {
@@ -115,9 +187,11 @@
             font-size: 0.85rem; font-weight: 500;
         }
 
-        /* Features */
+        /* ========================
+           Feature Showcase Rows
+           ======================== */
         .features {
-            padding: 80px 0;
+            padding: 72px 0 56px;
             position: relative;
             z-index: 1;
         }
@@ -126,60 +200,120 @@
             letter-spacing: -0.02em;
             text-align: center; margin-bottom: 48px;
         }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            margin-bottom: 56px;
+        }
+        .feature-row:last-child { margin-bottom: 0; }
+        .feature-row.reverse .feature-text { order: 2; }
+        .feature-row.reverse .feature-screenshot { order: 1; }
+
+        .feature-text {
+            padding: 16px 0;
+        }
+        .feature-icon {
+            width: 48px; height: 48px;
+            margin-bottom: 16px;
+        }
+        .feature-text h3 {
+            font-size: 1.4rem; font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+        .feature-text p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .feature-screenshot {
+            display: flex;
+            justify-content: center;
+        }
+        .feature-screenshot picture {
+            display: block;
+            width: 100%;
+            max-width: 280px;
+            border-radius: 44px;
+            overflow: hidden;
+            filter: drop-shadow(0 12px 40px rgba(0,0,0,0.35));
+            transition: transform 0.2s;
+            will-change: transform;
+        }
+        .feature-screenshot picture:hover {
+            transform: scale(1.02);
+        }
+        .feature-screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Remaining features grid (no screenshots) */
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 16px;
+            margin-top: 48px;
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .feature-grid-header {
+            text-align: center;
+            margin-top: 56px;
+            margin-bottom: 24px;
+        }
+        .feature-grid-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: -0.01em;
         }
         .feature-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 28px;
-            box-shadow: 0 0 12px rgba(255,255,255,0.06);
-            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
+            padding: 24px;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
         }
         .feature-card:hover {
             border-color: var(--glass-border-hover);
             background: var(--glass-hover);
-            box-shadow: 0 0 20px rgba(255,255,255,0.08);
             transform: translateY(-2px);
         }
-        /* Circle icon — mirrors the app's Icon component (filled circle + white symbol at 50%) */
-        .feature-icon {
-            width: 48px; height: 48px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 16px;
+        .feature-card .feature-icon {
+            width: 44px; height: 44px;
         }
         .feature-card h3 {
-            font-size: 1.05rem; font-weight: 600;
-            margin-bottom: 6px; letter-spacing: -0.01em;
+            font-size: 1rem; font-weight: 600;
+            margin-bottom: 4px; letter-spacing: -0.01em;
         }
         .feature-card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
             line-height: 1.5;
         }
 
-        /* Privacy Commitment */
+        /* ========================
+           Privacy Commitment
+           ======================== */
         .commitment {
-            padding: 80px 0;
+            padding: 64px 0;
             position: relative;
             z-index: 1;
         }
+        .commitment-layout {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
         .commitment-card {
-            background: var(--glass-strong);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 48px;
+            padding: 40px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 0 12px rgba(255,255,255,0.06), 0 16px 64px rgba(0,0,0,0.2);
         }
         .commitment-card::before {
             content: '';
@@ -193,77 +327,74 @@
             margin-bottom: 12px;
         }
         .commitment-shield {
-            width: 48px; height: 48px;
-            border-radius: 50%;
+            width: 44px; height: 44px;
             background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
-            display: flex; align-items: center; justify-content: center;
             box-shadow: 0 4px 20px rgba(38,51,204,0.3);
-            flex-shrink: 0;
         }
         .commitment h2 {
-            font-size: 1.8rem; font-weight: 700;
+            font-size: 1.6rem; font-weight: 700;
             letter-spacing: -0.02em;
         }
         .commitment .intro {
             color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 560px;
+            margin-bottom: 24px;
+            max-width: 520px;
+            font-size: 0.95rem;
         }
-        .commitment-grid {
+        .commitment-list {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
-        .commitment-item {
+        .commitment-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 16px;
             background: var(--glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 0 12px rgba(255,255,255,0.06);
-            transition: border-color 0.3s, background 0.3s;
+            border-radius: 16px;
+            transition: border-color 0.2s, background 0.2s;
         }
-        .commitment-item:hover {
+        .commitment-row:hover {
             border-color: var(--glass-border-hover);
             background: var(--glass-hover);
         }
-        .commitment-item-icon {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 12px;
+        .commitment-row-icon {
+            width: 32px; height: 32px;
         }
-        .commitment-item h3 {
-            font-size: 1rem; font-weight: 600;
-            margin-bottom: 4px;
+        .commitment-row h4 {
+            font-size: 0.9rem; font-weight: 600;
+            margin-bottom: 2px;
         }
-        .commitment-item p {
-            font-size: 0.85rem;
+        .commitment-row p {
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.4;
         }
-        @media (max-width: 640px) {
-            .commitment-grid { grid-template-columns: 1fr; }
-            .commitment-card { padding: 28px; }
+        .commitment-screenshot {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        .commitment-screenshot img {
+            width: 260px;
+            height: auto;
+            filter: drop-shadow(0 12px 40px rgba(0,0,0,0.35));
         }
 
-        /* Feedback */
+        /* ========================
+           Feedback
+           ======================== */
         .feedback {
-            padding: 80px 0;
+            padding: 64px 0;
             position: relative;
             z-index: 1;
         }
         .feedback-wrapper {
-            background: var(--glass-strong);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
             padding: 48px;
             max-width: 600px;
             margin: 0 auto;
-            box-shadow: 0 0 12px rgba(255,255,255,0.06), 0 16px 64px rgba(0,0,0,0.2);
         }
         .feedback h2 {
             font-size: 1.8rem; font-weight: 700;
@@ -289,12 +420,10 @@
             border-radius: 12px;
             border: 1px solid var(--glass-border);
             background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             color: var(--text);
             font-size: 0.95rem;
             font-family: inherit;
-            transition: border-color 0.2s, background 0.2s;
+            transition: border-color 0.2s;
             outline: none;
         }
         .form-group input:focus,
@@ -334,15 +463,42 @@
             color: #EF4444;
         }
 
+        /* ========================
+           Responsive
+           ======================== */
+        @media (max-width: 768px) {
+            .feature-row {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                margin-bottom: 48px;
+            }
+            .feature-row.reverse .feature-text { order: 1; }
+            .feature-row.reverse .feature-screenshot { order: 2; }
+            .feature-screenshot picture { max-width: 220px; }
+            .commitment-layout {
+                grid-template-columns: 1fr;
+            }
+            .commitment-screenshot {
+                justify-content: center;
+                order: -1;
+            }
+            .commitment-screenshot img { width: 200px; }
+        }
         @media (max-width: 640px) {
             .hero { padding: 60px 0 50px; }
             .hero-icon { width: 72px; height: 72px; border-radius: 18px; }
-            .feature-grid { grid-template-columns: 1fr; }
+            .hero-phone { width: 200px; margin-top: 36px; }
+            .hero-phone-glow { width: 240px; height: 240px; }
+            .feature-grid { grid-template-columns: 1fr; max-width: none; }
+            .commitment-list { grid-template-columns: 1fr; }
+            .commitment-card { padding: 24px; }
             .feedback-wrapper { padding: 28px; }
             .nav-links .back { display: none; }
         }
 
-        /* Light mode — page-specific overrides */
+        /* ========================
+           Light mode overrides
+           ======================== */
         @media (prefers-color-scheme: light) {
             .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
             .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
@@ -351,11 +507,23 @@
             .hero-icon {
                 box-shadow: 0 8px 40px rgba(89,64,204,0.2), 0 0 60px rgba(38,51,204,0.08);
             }
+            .hero-phone-glow {
+                background: radial-gradient(circle, rgba(89,64,204,0.15), rgba(38,51,204,0.08) 50%, transparent 70%);
+            }
+            .hero-phone picture {
+                filter: drop-shadow(0 20px 60px rgba(0,0,0,0.15));
+            }
             .feature-card {
                 box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
             .feature-card:hover {
                 box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 8px 30px rgba(0,0,0,0.04);
+            }
+            .feature-screenshot picture {
+                filter: drop-shadow(0 8px 32px rgba(0,0,0,0.10));
+            }
+            .commitment-screenshot img {
+                filter: drop-shadow(0 12px 40px rgba(0,0,0,0.12));
             }
             .feedback-wrapper {
                 box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
@@ -381,12 +549,53 @@
             .commitment-card {
                 box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
             }
-            .commitment-item {
-                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            .commitment-row {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.03);
             }
             .commitment-shield {
                 box-shadow: 0 4px 16px rgba(89,64,204,0.15);
             }
+        }
+
+        /* Scroll-triggered reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Closing CTA */
+        .cta-closing {
+            text-align: center;
+            padding: 56px 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-closing h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .cta-closing p {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            font-size: 1rem;
+        }
+
+        /* Reduced motion — kill animations & transitions for accessibility + perf */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .bg-glow { display: none; }
+            .reveal { opacity: 1; transform: none; }
         }
     </style>
 </head>
@@ -428,10 +637,18 @@
             </div>
             <h1>Track<span class="dollar">$</span>mart</h1>
             <p class="subtitle">Your finances, your device, your control.</p>
-            <p class="desc">AI-powered budgeting with spending insights, heatmaps, and cash flow forecasting. Built entirely with Apple frameworks — zero third-party SDKs.</p>
+            <p class="desc">Build better spending habits with AI-powered insights, smart budgets, and cash flow forecasting — all on-device. Your data never leaves your phone.</p>
             <div class="badge-row">
                 <a href="#" class="badge primary">Download on TestFlight</a>
                 <a href="#feedback" class="badge secondary">Send Feedback</a>
+            </div>
+            <p class="pricing-hint">Free to try &middot; $6.99/mo for Pro</p>
+            <div class="hero-phone">
+                <div class="hero-phone-glow"></div>
+                <picture>
+                    <source srcset="screenshots/01-Financial-Health-Light_framed.png" media="(prefers-color-scheme: light)">
+                    <img src="screenshots/01-Financial-Health_framed.png" alt="TrackSmart Financial Health Score — 97 out of 100" width="260" height="532">
+                </picture>
             </div>
         </div>
     </section>
@@ -443,144 +660,200 @@
         </span>
     </div>
 
+    <!-- ========================
+         Feature Showcase (Alternating Rows)
+         ======================== -->
     <section class="features" id="features">
         <div class="container">
             <h2>Everything you need to take control</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #10B981;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><rect x="2" y="13" width="5" height="9" rx="1.5"/><rect x="9.5" y="8" width="5" height="14" rx="1.5"/><rect x="17" y="4" width="5" height="18" rx="1.5"/></svg>
+
+            <!-- Row 1: Money Flow — arrow.left.arrow.right -->
+            <div class="feature-row reveal">
+                <div class="feature-text">
+                    <div class="feature-icon circle-icon" style="background: #4ECDC4;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="22" y2="8"/><polyline points="6 4 2 8 6 12"/><line x1="22" y1="16" x2="2" y2="16"/><polyline points="18 12 22 16 18 20"/></svg>
+                    </div>
+                    <h3>Money Flow Visualization</h3>
+                    <p>A Sankey diagram shows exactly how money flows from your accounts to spending categories. Follow every dollar from source to destination.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <picture>
+                        <source srcset="screenshots/02-Money-Flow-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/02-Money-Flow_framed.png" alt="Money Flow screen" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+
+            <!-- Row 2: AI Spending Intelligence — brain.head.profile.fill -->
+            <div class="feature-row reverse reveal">
+                <div class="feature-text">
+                    <div class="feature-icon circle-icon" style="background: #5F27CD;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.2 6H12"/><path d="M8.8 15A7 7 0 0 1 5 9a7 7 0 0 1 7-7"/><path d="M9 9.4c0-.8.6-1.4 1.3-1.4.8 0 1.4.6 1.4 1.4a1.4 1.4 0 0 1-1.4 1.3c-.7 0-1.2.6-1.2 1.3v.8"/><circle cx="10" cy="15" r=".5" fill="white"/><path d="M8 18h8"/><path d="M9 21h6"/></svg>
+                    </div>
+                    <h3>AI Spending Intelligence</h3>
+                    <p>On-device machine learning predicts your future spending with confidence scores. Get personalized insights and category trends — all processed privately on your device.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <picture>
+                        <source srcset="screenshots/03-Spending-Intelligence-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/03-Spending-Intelligence_framed.png" alt="AI Spending Intelligence screen" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+
+            <!-- Row 3: Financial Health Score — waveform.path.ecg -->
+            <div class="feature-row reveal">
+                <div class="feature-text">
+                    <div class="feature-icon circle-icon" style="background: #F59E0B;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 5.5 12 8 5 11 19 14 9 16.5 12 22 12"/></svg>
+                    </div>
+                    <h3>Financial Health Score</h3>
+                    <p>Get graded A through F across spending categories with benchmarks based on recommended guidelines. Track your overall wellness with a score out of 100.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <picture>
+                        <source srcset="screenshots/01-Financial-Health-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/01-Financial-Health_framed.png" alt="Financial Health screen" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+
+            <!-- Row 4: Smart Budgets — heart.text.clipboard -->
+            <div class="feature-row reverse reveal">
+                <div class="feature-text">
+                    <div class="feature-icon circle-icon" style="background: #10B981;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="18" rx="2"/><path d="M9 2v3h6V2"/><path d="M12 11l-1.5 1.5L12 14l3-3-1.5-1.5L12 11z" fill="white" stroke="none"/><path d="M8.5 18h7"/></svg>
                     </div>
                     <h3>Smart Budgets</h3>
                     <p>Create custom budgets by category with real-time tracking, visual progress bars, and alerts before you overspend.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #5F27CD;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 1.5l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/></svg>
-                    </div>
-                    <h3>AI Spending Predictions</h3>
-                    <p>On-device machine learning analyzes your habits and predicts future spending with confidence scores.</p>
+                <div class="feature-screenshot">
+                    <picture>
+                        <source srcset="screenshots/04-Budgets-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/04-Budgets_framed.png" alt="Smart Budgets screen" loading="lazy">
+                    </picture>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #FF6B6B;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2.5C8.5 7 5.5 10 5.5 14.5c0 3.6 2.9 6.5 6.5 6.5s6.5-2.9 6.5-6.5c0-4.5-3-7.5-6.5-12z"/></svg>
+            </div>
+
+            <!-- Row 5: Spending Heatmap — calendar -->
+            <div class="feature-row reveal">
+                <div class="feature-text">
+                    <div class="feature-icon circle-icon" style="background: #FF6B6B;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><rect x="6" y="13" width="3" height="2.5" rx="0.5" fill="white" stroke="none"/><rect x="10.5" y="13" width="3" height="2.5" rx="0.5" fill="white" stroke="none" opacity="0.6"/><rect x="15" y="13" width="3" height="2.5" rx="0.5" fill="white" stroke="none" opacity="0.3"/></svg>
                     </div>
                     <h3>Spending Heatmap</h3>
-                    <p>See your spending patterns on a calendar heatmap. Instantly spot high-spend days and trends.</p>
+                    <p>See your spending patterns on a calendar heatmap. Instantly spot high-spend days and discover which days drain your wallet the most.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #FF8C42;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm-1 14v-2h2v2h-2zm0-4V8h2v4h-2z"/></svg>
-                    </div>
-                    <h3>Anomaly Detection</h3>
-                    <p>Catches unusual transactions, duplicate charges, merchant price shifts, and spending spikes automatically.</p>
+                <div class="feature-screenshot">
+                    <picture>
+                        <source srcset="screenshots/06-Heatmap-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/06-Heatmap_framed.png" alt="Spending Heatmap screen" loading="lazy">
+                    </picture>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #4ECDC4;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M16 3l4 4-4 4V8H4V6h12V3zM8 21l-4-4 4-4v3h12v2H8v3z"/></svg>
-                    </div>
-                    <h3>Money Flow Visualization</h3>
-                    <p>A Sankey diagram shows exactly how money flows from your accounts to spending categories.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #38B6FF;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+
+            <!-- Remaining features without screenshots -->
+            <div class="feature-grid-header reveal">
+                <h3>And even more</h3>
+            </div>
+            <div class="feature-grid reveal">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon circle-icon" style="background: #38B6FF;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
                     </div>
                     <h3>Cash Flow Forecast</h3>
-                    <p>Know your safe-to-spend amount for the rest of the month based on recurring income and expenses.</p>
+                    <p>Know your safe-to-spend amount and see projected balances 30, 60, and 90 days ahead.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #F59E0B;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon circle-icon" style="background: #FF8C42;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="white"/></svg>
                     </div>
-                    <h3>Financial Health Score</h3>
-                    <p>Get graded A through F across spending categories with benchmarks based on recommended guidelines.</p>
+                    <h3>Anomaly Detection</h3>
+                    <p>Catches unusual transactions, duplicate charges, and merchant price shifts automatically.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #A855F7;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 13h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon circle-icon" style="background: #E056A0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M21.1 8A10 10 0 0 0 4.5 4.5L2.5 8"/><path d="M2.9 16a10 10 0 0 0 16.6 3.5l2-3.5"/></svg>
+                    </div>
+                    <h3>Subscription Tracker</h3>
+                    <p>Automatically detects recurring subscriptions and shows monthly costs at a glance.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon circle-icon" style="background: #A855F7;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
                     </div>
                     <h3>AI Statement Reader</h3>
-                    <p>Import bank statements from PDF, CSV, or OFX files. On-device AI extracts transactions from PDFs automatically.</p>
+                    <p>Import bank statements from PDF, CSV, or OFX. On-device AI extracts transactions automatically.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: #0EA5E9;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon circle-icon" style="background: #0EA5E9;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
                     </div>
                     <h3>iCloud Sync & Sharing</h3>
-                    <p>Syncs across all your devices via iCloud. Share with family through CloudKit — no sign-ups or passwords.</p>
+                    <p>Syncs across all your devices via iCloud. Share with family through CloudKit.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ========================
+         Privacy Commitment + Screenshot
+         ======================== -->
     <section class="commitment">
         <div class="container">
-            <div class="commitment-card">
-                <div class="commitment-header">
-                    <div class="commitment-shield">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+            <div class="commitment-layout reveal">
+                <div class="commitment-card glass-card-strong">
+                    <div class="commitment-header">
+                        <div class="commitment-shield circle-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+                        </div>
+                        <h2>Your data is yours. Period.</h2>
                     </div>
-                    <h2>Your data is yours. Period.</h2>
+                    <p class="intro">Your financial data never leaves your device unless you choose to sync it yourself via iCloud. No accounts, no servers, no tracking.</p>
+                    <div class="commitment-list">
+                        <div class="commitment-row">
+                            <div class="commitment-row-icon circle-icon" style="background: #007AFF;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                            </div>
+                            <div>
+                                <h4>On-Device Storage</h4>
+                                <p>All data stored locally. iCloud sync is optional and private.</p>
+                            </div>
+                        </div>
+                        <div class="commitment-row">
+                            <div class="commitment-row-icon circle-icon" style="background: #AF52DE;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                            </div>
+                            <div>
+                                <h4>Zero Tracking</h4>
+                                <p>No analytics, no behavior tracking, no third-party data sharing.</p>
+                            </div>
+                        </div>
+                        <div class="commitment-row">
+                            <div class="commitment-row-icon circle-icon" style="background: #5856D6;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            </div>
+                            <div>
+                                <h4>No Third-Party SDKs</h4>
+                                <p>Built entirely with Apple frameworks. No external code in the app.</p>
+                            </div>
+                        </div>
+                        <div class="commitment-row">
+                            <div class="commitment-row-icon circle-icon" style="background: #34C759;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><rect x="8" y="10" width="8" height="6" rx="1"/><path d="M10 10V8a2 2 0 1 1 4 0v2"/></svg>
+                            </div>
+                            <div>
+                                <h4>Encrypted & Offline</h4>
+                                <p>iOS Data Protection encrypts at rest. No account or sign-up required.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="intro">Track$mart was designed from day one with a simple principle: your financial data never leaves your device unless you choose to sync it yourself via iCloud.</p>
-                <div class="commitment-grid">
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #007AFF;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                        </div>
-                        <h3>On-Device Storage</h3>
-                        <p>All financial data is stored locally on your device. Nothing leaves unless you choose iCloud sync.</p>
-                    </div>
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #32ADE6;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-                        </div>
-                        <h3>iCloud Sync</h3>
-                        <p>When enabled, data syncs via your private iCloud container. Only you and people you share with can access it.</p>
-                    </div>
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #AF52DE;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-                        </div>
-                        <h3>No Tracking</h3>
-                        <p>Track$mart does not collect analytics, track your behavior, or share data with third parties.</p>
-                    </div>
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #34C759;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><rect x="8" y="10" width="8" height="6" rx="1"/><path d="M10 10V8a2 2 0 1 1 4 0v2"/></svg>
-                        </div>
-                        <h3>Encrypted at Rest</h3>
-                        <p>Your device encrypts all app data when locked using iOS Data Protection.</p>
-                    </div>
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #FF9500;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a16 16 0 0 1 4 10 16 16 0 0 1-4 10 16 16 0 0 1-4-10A16 16 0 0 1 12 2z"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
-                        </div>
-                        <h3>No External Servers</h3>
-                        <p>Track$mart never sends your data to any server other than your own iCloud account.</p>
-                    </div>
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #5856D6;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                        </div>
-                        <h3>No Third-Party SDKs</h3>
-                        <p>Built entirely with Apple frameworks. No external analytics, crash reporters, or ad networks.</p>
-                    </div>
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #30B0C7;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" y1="11" x2="22" y2="16"/><line x1="22" y1="11" x2="17" y2="16"/></svg>
-                        </div>
-                        <h3>No Account Required</h3>
-                        <p>Track$mart works fully offline. No sign-up, email, or personal information needed.</p>
-                    </div>
-                    <div class="commitment-item">
-                        <div class="commitment-item-icon" style="background: #FF375F;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3M19 9h3m-3 6h3"/></svg>
-                        </div>
-                        <h3>On-Device Processing</h3>
-                        <p>All AI analysis runs on your device using Apple's Core ML. Nothing is sent to external servers.</p>
-                    </div>
+                <div class="commitment-screenshot">
+                    <picture>
+                        <source srcset="screenshots/09-Privacy-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/09-Privacy_framed.png" alt="Privacy settings screen" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -588,7 +861,7 @@
 
     <section class="feedback" id="feedback">
         <div class="container">
-            <div class="feedback-wrapper">
+            <div class="feedback-wrapper glass-card-strong reveal">
                 <h2>Send Feedback</h2>
                 <p class="intro">Found a bug? Have a feature request? We'd love to hear from you.</p>
                 <form id="feedback-form">
@@ -657,6 +930,18 @@
         </div>
     </section>
 
+    <!-- Closing CTA -->
+    <section class="cta-closing reveal">
+        <div class="container">
+            <h2>Ready to take control?</h2>
+            <p>Start tracking smarter today — no account required.</p>
+            <div class="badge-row">
+                <a href="#" class="badge primary">Download on TestFlight</a>
+            </div>
+            <p class="pricing-hint" style="margin-top: 14px; font-size: 0.85rem; color: var(--text-secondary);">Free to try &middot; $6.99/mo for Pro</p>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <p>&copy; 2026 Automation &amp; Development</p>
@@ -667,5 +952,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- Scroll-triggered reveal -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
