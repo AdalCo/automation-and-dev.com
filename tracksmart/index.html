@@ -563,7 +563,9 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 48px;
+            padding: 32px 0 0;
+            position: relative;
+            z-index: 1;
         }
         .toggle-hint {
             font-size: 0.85rem;
@@ -699,13 +701,14 @@
     <!-- ========================
          Feature Showcase (Alternating Rows)
          ======================== -->
+    <div class="screenshot-toggle-bar">
+        <span class="toggle-hint">Preview in</span>
+        <button id="screenshot-toggle" class="theme-toggle" aria-label="Toggle screenshot theme"></button>
+    </div>
+
     <section class="features" id="features">
         <div class="container">
             <h2>Everything you need to take control</h2>
-            <div class="screenshot-toggle-bar">
-                <span class="toggle-hint">Preview in</span>
-                <button id="screenshot-toggle" class="theme-toggle" aria-label="Toggle screenshot theme"></button>
-            </div>
 
             <!-- Row 1: Money Flow — arrow.left.arrow.right -->
             <div class="feature-row reveal">
