@@ -13,8 +13,6 @@
     --text: #f5f5f7;
     --text-secondary: #86868b;
     --blue: #007AFF;
-    --blue-dim: rgba(0,122,255,0.12);
-    --blue-glow: rgba(0,122,255,0.25);
     --indigo-from: #2633CC;
     --indigo-to: #5940CC;
     --dollar: #8B7AE8;
@@ -22,6 +20,7 @@
 
 /* Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 /* Body */
 body {
@@ -167,6 +166,38 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
 .legal strong { color: var(--text); }
 .legal a { color: var(--blue); text-decoration: none; }
 .legal a:hover { text-decoration: underline; }
+.legal .summary-box {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+}
+.legal .summary-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 10px 0;
+}
+.legal .summary-item:first-child { padding-top: 0; }
+.legal .summary-item:last-child { padding-bottom: 0; }
+.legal .summary-icon {
+    width: 32px; height: 32px; min-width: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+.legal .summary-item div:last-child { flex: 1; }
+.legal .summary-item strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 1px;
+}
+.legal .summary-item span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
 
 /* Mobile — shared */
 @media (max-width: 640px) {
@@ -187,8 +218,6 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
         --text: #1d1d1f;
         --text-secondary: #6e6e73;
         --blue: #007AFF;
-        --blue-dim: rgba(0,122,255,0.08);
-        --blue-glow: rgba(0,122,255,0.12);
         --indigo-from: #5940CC;
         --indigo-to: #2633CC;
         --dollar: #4A3AA0;
@@ -212,5 +241,8 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
     }
     .legal-badge {
         box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .legal .summary-box {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
     }
 }

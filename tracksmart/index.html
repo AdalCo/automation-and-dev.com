@@ -7,6 +7,13 @@
     <meta name="description" content="Build better spending habits with AI-powered insights, smart budgets, and cash flow forecasting — all on-device. Your data never leaves your phone.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Track$mart — Privacy-First Expense Tracker">
+    <meta property="og:description" content="AI-powered insights, smart budgets, and cash flow forecasting — all on-device. Your data never leaves your phone.">
+    <meta property="og:image" content="https://automation-and-dev.com/tracksmart/screenshots/01-Financial-Health-Light_framed.png">
+    <meta property="og:url" content="https://automation-and-dev.com/tracksmart/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="shared.css">
     <style>
         /* Orb configuration — GPU-promoted with will-change & contain */
@@ -97,18 +104,16 @@
         }
         .badge:hover { transform: translateY(-2px); }
         .badge.primary {
-            background: var(--indigo-to);
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
             color: #fff;
+            box-shadow: 0 4px 20px rgba(38,51,204,0.3);
         }
-        .badge.secondary {
-            background: var(--indigo-to);
-            color: #fff;
+        .app-store-badge {
+            display: inline-block;
+            transition: transform 0.2s;
         }
-        .hero .pricing-hint {
-            margin-top: 14px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
+        .app-store-badge:hover { transform: translateY(-2px); }
+        .app-store-badge img { height: 44px; width: auto; display: block; }
 
         /* Hero floating phone */
         .hero-phone {
@@ -559,9 +564,8 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 32px 0 0;
-            position: relative;
-            z-index: 1;
+            margin-top: -8px;
+            margin-bottom: 40px;
         }
         .toggle-hint {
             font-size: 0.85rem;
@@ -602,6 +606,187 @@
             transform: translateY(0);
         }
 
+        /* ========================
+           Pricing Section
+           ======================== */
+        .pricing {
+            padding: 72px 0 56px;
+            position: relative;
+            z-index: 1;
+        }
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .pricing-header h2 {
+            font-size: 2rem; font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .pricing-intro {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .pricing-card-featured {
+            border: 1.5px solid rgba(89,64,204,0.4);
+        }
+        .plan-popular {
+            position: absolute;
+            top: -12px;
+            padding: 4px 16px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .plan-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .free-badge {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+        .pro-badge {
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            color: #fff;
+        }
+        .plan-price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+        .plan-price-unit {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .plan-period {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        .plan-alt {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            opacity: 0.7;
+        }
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 24px;
+            width: 100%;
+            text-align: left;
+        }
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .plan-features li:last-child { border-bottom: none; }
+        .plan-features li svg { flex-shrink: 0; }
+
+        .plan-features strong {
+            color: var(--text);
+        }
+        .plan-includes {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            letter-spacing: 0.01em;
+        }
+        .plan-upgrade-hint {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: auto;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+        .plan-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: auto;
+        }
+        .plan-cta:hover { transform: translateY(-2px); }
+        .plan-cta-free {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+        }
+        .plan-cta-free:hover {
+            border-color: var(--glass-border-hover);
+            background: var(--glass-hover);
+        }
+        .plan-cta-pro {
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(38,51,204,0.3);
+        }
+        .plan-cta-pro:hover {
+            box-shadow: 0 6px 28px rgba(38,51,204,0.4);
+        }
+        @media (max-width: 640px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+            }
+            .pricing-card-featured { order: -1; }
+        }
+        @media (prefers-color-scheme: light) {
+            .pricing-card:not(.pricing-card-featured) {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            }
+            .pricing-card-featured {
+                border-color: rgba(89,64,204,0.25);
+                box-shadow: 0 4px 24px rgba(89,64,204,0.10), 0 12px 40px rgba(0,0,0,0.04);
+            }
+            .plan-cta-pro {
+                box-shadow: 0 4px 16px rgba(89,64,204,0.25);
+            }
+            .plan-cta-free {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            }
+        }
+
         /* Closing CTA */
         .cta-closing {
             text-align: center;
@@ -626,14 +811,22 @@
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
             }
             .bg-glow { display: none; }
-            .reveal { opacity: 1; transform: none; }
+            .reveal {
+                transform: none;
+                transition: opacity 0.4s ease !important;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Shared SVG sprites -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+        <symbol id="icon-apple" viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></symbol>
+    </svg>
+
     <!-- Floating gradient orbs -->
     <div class="bg-glow">
         <div class="orb orb-1"></div>
@@ -655,8 +848,9 @@
             </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
                 <a href="#feedback">Feedback</a>
-                <a href="../" class="back">All Apps</a>
+                <a href="../" class="back">Home</a>
             </div>
         </div>
     </nav>
@@ -673,10 +867,13 @@
             <p class="subtitle">Your finances, your device, your control.</p>
             <p class="desc">Build better spending habits with AI-powered insights, smart budgets, and cash flow forecasting — all on-device. Your data never leaves your phone.</p>
             <div class="badge-row">
-                <a href="#" class="badge primary">Download on TestFlight</a>
-                <a href="#feedback" class="badge secondary">Send Feedback</a>
+                <a href="https://apps.apple.com/app/tracksmart/id6761645067" class="app-store-badge">
+                    <picture>
+                        <source srcset="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" media="(prefers-color-scheme: light)">
+                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83" alt="Download on the App Store">
+                    </picture>
+                </a>
             </div>
-            <p class="pricing-hint">Free to try &middot; $6.99/mo for Pro</p>
             <div class="hero-phone">
                 <div class="hero-phone-glow"></div>
                 <picture>
@@ -697,14 +894,13 @@
     <!-- ========================
          Feature Showcase (Alternating Rows)
          ======================== -->
-    <div class="screenshot-toggle-bar">
-        <span class="toggle-hint">Preview in</span>
-        <button id="screenshot-toggle" class="theme-toggle" aria-label="Toggle screenshot theme"></button>
-    </div>
-
     <section class="features" id="features">
         <div class="container">
             <h2>Everything you need to take control</h2>
+            <div class="screenshot-toggle-bar">
+                <span class="toggle-hint">Preview in</span>
+                <button id="screenshot-toggle" class="theme-toggle" aria-label="Toggle screenshot theme"></button>
+            </div>
 
             <!-- Row 1: Money Flow — arrow.left.arrow.right -->
             <div class="feature-row reveal">
@@ -740,19 +936,19 @@
                 </div>
             </div>
 
-            <!-- Row 3: Financial Health Score — waveform.path.ecg -->
+            <!-- Row 3: Anomaly Detection — exclamationmark.triangle -->
             <div class="feature-row reveal">
                 <div class="feature-text">
-                    <div class="feature-icon circle-icon" style="background: #F59E0B;">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 5.5 12 8 5 11 19 14 9 16.5 12 22 12"/></svg>
+                    <div class="feature-icon circle-icon" style="background: #FF8C42;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="white"/></svg>
                     </div>
-                    <h3>Financial Health Score</h3>
-                    <p>Get graded A through F across spending categories with benchmarks based on recommended guidelines. Track your overall wellness with a score out of 100.</p>
+                    <h3>Anomaly Detection</h3>
+                    <p>On-device intelligence catches unusual transactions, duplicate charges, and merchant price shifts — so you never miss a suspicious charge.</p>
                 </div>
                 <div class="feature-screenshot">
                     <picture>
-                        <source srcset="screenshots/01-Financial-Health-Light_framed.png" media="(prefers-color-scheme: light)">
-                        <img src="screenshots/01-Financial-Health_framed.png" alt="Financial Health screen" loading="lazy">
+                        <source srcset="screenshots/08-Anomaly-Detection-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/08-Anomaly-Detection_framed.png" alt="Anomaly Detection screen" loading="lazy">
                     </picture>
                 </div>
             </div>
@@ -791,24 +987,34 @@
                 </div>
             </div>
 
+            <!-- Row 6: Cash Flow Forecast -->
+            <div class="feature-row reverse reveal">
+                <div class="feature-text">
+                    <div class="feature-icon circle-icon" style="background: #38B6FF;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </div>
+                    <h3>Cash Flow Forecast</h3>
+                    <p>Know your safe-to-spend amount and see projected balances 30, 60, and 90 days ahead — including upcoming bills and recurring transactions.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <picture>
+                        <source srcset="screenshots/05-Cash-Flow-Forecast-Light_framed.png" media="(prefers-color-scheme: light)">
+                        <img src="screenshots/05-Cash-Flow-Forecast_framed.png" alt="Cash Flow Forecast screen" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+
             <!-- Remaining features without screenshots -->
             <div class="feature-grid-header reveal">
-                <h3>And even more</h3>
+                <h3>Built-in tools</h3>
             </div>
             <div class="feature-grid reveal">
                 <div class="feature-card glass-card">
-                    <div class="feature-icon circle-icon" style="background: #38B6FF;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    <div class="feature-icon circle-icon" style="background: #F59E0B;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 5.5 12 8 5 11 19 14 9 16.5 12 22 12"/></svg>
                     </div>
-                    <h3>Cash Flow Forecast</h3>
-                    <p>Know your safe-to-spend amount and see projected balances 30, 60, and 90 days ahead.</p>
-                </div>
-                <div class="feature-card glass-card">
-                    <div class="feature-icon circle-icon" style="background: #FF8C42;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="white"/></svg>
-                    </div>
-                    <h3>Anomaly Detection</h3>
-                    <p>Catches unusual transactions, duplicate charges, and merchant price shifts automatically.</p>
+                    <h3>Financial Health Score</h3>
+                    <p>Get graded A–F across categories with a wellness score out of 100.</p>
                 </div>
                 <div class="feature-card glass-card">
                     <div class="feature-icon circle-icon" style="background: #E056A0;">
@@ -830,6 +1036,65 @@
                     </div>
                     <h3>iCloud Sync & Sharing</h3>
                     <p>Syncs across all your devices via iCloud. Share with family through CloudKit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         Pricing — Free vs Pro
+         ======================== -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header reveal">
+                <h2>Simple, transparent pricing</h2>
+                <p class="pricing-intro">Start free. Upgrade when you're ready.</p>
+            </div>
+            <div class="pricing-grid reveal">
+                <!-- Free Plan -->
+                <div class="pricing-card glass-card">
+                    <div class="plan-badge free-badge">Free</div>
+                    <div class="plan-price">$0</div>
+                    <div class="plan-period">forever</div>
+                    <ul class="plan-features">
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Up to 3 accounts</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Up to 2 budgets</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Up to 2 savings goals</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Up to 5 tags</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> 16 default categories</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> iCloud sync</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Basic insights</li>
+                    </ul>
+                    <p class="plan-upgrade-hint">Need more power? Upgrade anytime.</p>
+                    <a href="https://apps.apple.com/app/tracksmart/id6761645067" class="plan-cta plan-cta-free">Get Started</a>
+                </div>
+                <!-- Pro Plan -->
+                <div class="pricing-card glass-card-strong pricing-card-featured">
+                    <div class="plan-popular">Most Popular</div>
+                    <div class="plan-badge pro-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/></svg>
+                        PRO
+                    </div>
+                    <div class="plan-price">$3.75<span class="plan-price-unit">/mo</span></div>
+                    <div class="plan-period">$44.99/year &middot; 7-day free trial</div>
+                    <div class="plan-alt">or $6.99/month</div>
+                    <div class="plan-includes">Everything in Free, plus:</div>
+                    <ul class="plan-features">
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> <strong>Unlimited</strong> accounts, budgets &amp; goals</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> <strong>Unlimited</strong> tags &amp; custom categories</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> AI Spending Intelligence</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Cash Flow Forecast</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Financial Health Score</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Anomaly &amp; duplicate detection</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Spending Heatmap</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Money Flow visualization</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Subscription detection</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> PDF statement import</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> PDF report generation</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Advanced notifications</li>
+                        <li class="included"><svg width="16" height="16"><use href="#icon-check"/></svg> Backup &amp; restore</li>
+                    </ul>
+                    <a href="https://apps.apple.com/app/tracksmart/id6761645067" class="plan-cta plan-cta-pro">Start Free Trial</a>
                 </div>
             </div>
         </div>
@@ -975,9 +1240,13 @@
             <h2>Ready to take control?</h2>
             <p>Start tracking smarter today — no account required.</p>
             <div class="badge-row">
-                <a href="#" class="badge primary">Download on TestFlight</a>
+                <a href="https://apps.apple.com/app/tracksmart/id6761645067" class="app-store-badge">
+                    <picture>
+                        <source srcset="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" media="(prefers-color-scheme: light)">
+                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83" alt="Download on the App Store">
+                    </picture>
+                </a>
             </div>
-            <p class="pricing-hint" style="margin-top: 14px; font-size: 0.85rem; color: var(--text-secondary);">Free to try &middot; $6.99/mo for Pro</p>
         </div>
     </section>
 
@@ -987,7 +1256,7 @@
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
-                <a href="../">All Apps</a>
+                <a href="../">Home</a>
             </div>
         </div>
     </footer>

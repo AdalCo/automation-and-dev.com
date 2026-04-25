@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation & Development — Apps Built with Care</title>
+    <meta name="description" content="Privacy-first iOS apps crafted with Apple-native frameworks. No third-party SDKs. Your data stays yours.">
+    <link rel="icon" type="image/png" href="tracksmart/favicon.png">
+    <link rel="apple-touch-icon" href="tracksmart/favicon.png">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Automation & Development — Apps Built with Care">
+    <meta property="og:description" content="Privacy-first iOS apps crafted with Apple-native frameworks. No third-party SDKs. Your data stays yours.">
+    <meta property="og:image" content="https://automation-and-dev.com/tracksmart/screenshots/01-Financial-Health-Light_framed.png">
+    <meta property="og:url" content="https://automation-and-dev.com/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <style>
         :root {
             --bg: #050510;
@@ -14,7 +24,6 @@
             --text: #f5f5f7;
             --text-secondary: #86868b;
             --blue: #007AFF;
-            --blue-dim: rgba(0,122,255,0.12);
             --indigo-from: #2633CC;
             --indigo-to: #5940CC;
             --dollar: #8B7AE8;
@@ -101,6 +110,8 @@
             font-size: 1.1rem;
             font-weight: 600;
             letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--text);
         }
         .logo span { color: var(--text-secondary); font-weight: 400; }
         nav a {
@@ -151,11 +162,14 @@
             letter-spacing: 0.1em;
             color: var(--text-secondary);
             margin-bottom: 32px;
+            text-align: center;
         }
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
+            max-width: 620px;
+            margin: 0 auto;
         }
 
         /* Glass cards */
@@ -170,7 +184,10 @@
             color: var(--text);
             box-shadow: 0 0 12px rgba(255,255,255,0.06);
             transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s, background 0.3s;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         .app-card:hover {
             transform: translateY(-4px);
@@ -187,7 +204,7 @@
         }
         .app-icon img { width: 100%; height: 100%; display: block; }
         .app-icon.placeholder {
-            background: rgba(255,255,255,0.04);
+            background: var(--glass);
             border: 1px solid var(--glass-border);
             display: flex; align-items: center; justify-content: center;
             color: var(--text-secondary); font-size: 1.4rem;
@@ -206,46 +223,55 @@
             margin-bottom: 16px;
         }
         .app-card .tag {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             font-size: 0.85rem;
             padding: 10px 24px;
             border-radius: 100px;
-            background: var(--blue);
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
             color: #fff;
             font-weight: 600;
             letter-spacing: -0.01em;
-            box-shadow: 0 4px 20px rgba(0,122,255,0.3);
+            box-shadow: 0 4px 20px rgba(89,64,204,0.3);
+            white-space: nowrap;
         }
         .app-card .tag.soon {
-            background: rgba(255,255,255,0.04);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
             color: var(--text-secondary);
             box-shadow: none;
         }
-
         /* Glass footer */
         footer {
             border-top: 1px solid var(--glass-border);
             padding: 40px 0;
-            text-align: center;
             position: relative;
             z-index: 1;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
+        footer .container {
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 16px;
+        }
         footer p {
             color: var(--text-secondary);
             font-size: 0.85rem;
         }
-        footer a {
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
+            font-size: 0.85rem;
             transition: color 0.2s;
         }
-        footer a:hover { color: var(--text); }
+        .footer-links a:hover { color: var(--text); }
 
         @media (max-width: 640px) {
             .hero { padding: 80px 0 60px; }
             .app-grid { grid-template-columns: 1fr; }
+            footer .container { justify-content: center; text-align: center; }
         }
 
         /* Light mode */
@@ -259,7 +285,6 @@
                 --text: #1d1d1f;
                 --text-secondary: #6e6e73;
                 --blue: #007AFF;
-                --blue-dim: rgba(0,122,255,0.08);
                 --indigo-from: #5940CC;
                 --indigo-to: #2633CC;
                 --dollar: #4A3AA0;
@@ -282,7 +307,7 @@
                 box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
             .app-card:hover {
-                box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(0,122,255,0.04);
+                box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(89,64,204,0.04);
             }
             .app-icon {
                 box-shadow: 0 4px 16px rgba(89,64,204,0.2);
@@ -290,19 +315,28 @@
             .app-icon.placeholder {
                 background: rgba(0,0,0,0.04);
                 border-color: rgba(0,0,0,0.08);
-                color: var(--text-secondary);
                 box-shadow: none;
-            }
-            .app-card .tag {
-                box-shadow: 0 4px 16px rgba(0,122,255,0.18);
             }
             .app-card .tag.soon {
                 background: rgba(0,0,0,0.04);
+                border-color: rgba(0,0,0,0.08);
                 box-shadow: none;
+            }
+            .app-card .tag {
+                box-shadow: 0 4px 16px rgba(89,64,204,0.18);
             }
             footer {
                 border-top-color: rgba(0,0,0,0.06);
             }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+            .bg-glow { display: none; }
         }
     </style>
 </head>
@@ -316,7 +350,7 @@
 
     <nav>
         <div class="container">
-            <div class="logo">Automation & Development</div>
+            <a href="./" class="logo">Automation & Development</a>
             <a href="mailto:autoanddev@gmail.com">Contact</a>
         </div>
     </nav>
@@ -341,9 +375,9 @@
                     </div>
                     <h3>Track<span class="dollar">$</span>mart</h3>
                     <p class="subtitle">Your finances, your device, your control. AI-powered budgeting with spending insights, heatmaps, and cash flow forecasting.</p>
-                    <span class="tag">Available on TestFlight</span>
+                    <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View App</span>
                 </a>
-                <div class="app-card" style="opacity: 0.5; cursor: default;">
+                <div class="app-card" style="opacity: 0.5; cursor: default; pointer-events: none;">
                     <div class="app-icon placeholder">?</div>
                     <h3>Coming Soon</h3>
                     <p class="subtitle">More privacy-first apps are in the works. Stay tuned.</p>
@@ -355,7 +389,12 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Automation & Development. All rights reserved.</p>
+            <p>&copy; 2026 Automation &amp; Development</p>
+            <div class="footer-links">
+                <a href="tracksmart/privacy.html">Privacy Policy</a>
+                <a href="tracksmart/terms.html">Terms of Service</a>
+                <a href="mailto:autoanddev@gmail.com">Contact</a>
+            </div>
         </div>
     </footer>
 </body>

@@ -31,40 +31,6 @@
             contain: strict;
         }
 
-        /* Page-specific: trust summary */
-        .legal .summary-box {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px 28px;
-            margin-bottom: 40px;
-        }
-        .legal .summary-item {
-            display: flex; align-items: flex-start; gap: 14px;
-            padding: 10px 0;
-        }
-        .legal .summary-item:first-child { padding-top: 0; }
-        .legal .summary-item:last-child { padding-bottom: 0; }
-        .legal .summary-icon {
-            width: 32px; height: 32px; min-width: 32px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .legal .summary-item div:last-child { flex: 1; }
-        .legal .summary-item strong {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text);
-            margin-bottom: 1px;
-        }
-        .legal .summary-item span {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
         /* Page-specific: h3, callout, pricing table */
         .legal h3 {
             font-size: 1.05rem; font-weight: 600;
@@ -104,9 +70,6 @@
         @media (prefers-color-scheme: light) {
             .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.18), transparent 70%); }
             .bg-glow .orb-2 { background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%); }
-            .legal .summary-box {
-                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
-            }
             .legal .callout {
                 box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
             }
@@ -121,7 +84,6 @@
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
             }
             .bg-glow { display: none; }
         }
@@ -152,10 +114,7 @@
         <div class="container">
             <span class="legal-badge">Legal</span>
             <h1>Terms of Service</h1>
-            <p class="effective">Effective Date: April 4, 2026</p>
-
-            <p>Please read these Terms of Service ("Terms") carefully before using the Track$mart mobile application ("the App") operated by Automation &amp; Development ("we," "us," or "our").</p>
-            <p>By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
+            <p class="effective">Effective Date: April 24, 2026</p>
 
             <div class="summary-box">
                 <div class="summary-item">
@@ -177,6 +136,9 @@
                     <div><strong>No Account Required</strong><span>No sign-up or personal information needed. See our <a href="privacy.html">Privacy Policy</a> for full details.</span></div>
                 </div>
             </div>
+
+            <p>Please read these Terms of Service ("Terms") carefully before using the Track$mart mobile application ("the App") operated by Automation &amp; Development ("we," "us," or "our").</p>
+            <p>By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
 
             <h2>Description of Service</h2>
             <p>Track$mart is a personal budgeting and expense tracking application. The App allows you to manually enter and manage transactions, accounts, budgets, savings goals, and categories. The App is designed to help you organize your personal finances.</p>
@@ -257,7 +219,7 @@
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="./">Track$mart</a>
-                <a href="../">All Apps</a>
+                <a href="../">Home</a>
             </div>
         </div>
     </footer>
