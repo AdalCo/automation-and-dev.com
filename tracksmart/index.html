@@ -1192,8 +1192,9 @@
                 </form>
                 <script>
                     (function() {
+                        var validTypes = ['bug', 'feature', 'feedback', 'other'];
                         var param = new URLSearchParams(location.search).get('type');
-                        if (param) {
+                        if (param && validTypes.includes(param)) {
                             var sel = document.getElementById('type');
                             if (sel) sel.value = param;
                         }
@@ -1281,11 +1282,16 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         if (location.hash) {
-            var target = document.querySelector(location.hash);
-            if (target) {
-                target.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
-                if (target.classList.contains('reveal')) target.classList.add('visible');
-                setTimeout(function() { target.scrollIntoView({ behavior: 'smooth' }); }, 100);
+            var validAnchors = ['features', 'pricing', 'feedback'];
+            var hashId = location.hash.substring(1);
+            if (validAnchors.includes(hashId)) {
+                var target = document.getElementById(hashId);
+                if (target) {
+                    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+                    window.addEventListener('load', function() {
+                        target.scrollIntoView();
+                    });
+                }
             }
         }
     </script>
@@ -1304,7 +1310,8 @@
                 dark: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
             };
             var labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
-            var current = localStorage.getItem(KEY) || 'auto';
+            var current = localStorage.getItem(KEY);
+            if (!modes.includes(current)) current = 'auto';
 
             function apply(mode) {
                 document.querySelectorAll(SELECTOR).forEach(function(s) {
