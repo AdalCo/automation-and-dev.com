@@ -1191,6 +1191,13 @@
                     <div id="form-status" class="form-status"></div>
                 </form>
                 <script>
+                    (function() {
+                        var param = new URLSearchParams(location.search).get('type');
+                        if (param) {
+                            var sel = document.getElementById('type');
+                            if (sel) sel.value = param;
+                        }
+                    })();
                     document.getElementById('feedback-form').addEventListener('submit', async function(e) {
                         e.preventDefault();
                         const btn = this.querySelector('.submit-btn');
