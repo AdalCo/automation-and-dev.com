@@ -1279,6 +1279,15 @@
             });
         }, { threshold: 0.15 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        if (location.hash) {
+            var target = document.querySelector(location.hash);
+            if (target) {
+                target.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+                if (target.classList.contains('reveal')) target.classList.add('visible');
+                setTimeout(function() { target.scrollIntoView({ behavior: 'smooth' }); }, 100);
+            }
+        }
     </script>
 
     <!-- Screenshot theme toggle — cycles Auto → Light → Dark -->
