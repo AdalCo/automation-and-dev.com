@@ -145,14 +145,15 @@ nav a.back {
 }
 nav a.back:hover { color: var(--text); }
 
-/* Hamburger toggle (CSS-only) */
-.nav-toggle { display: none; }
+/* Hamburger toggle */
 .nav-hamburger {
     display: none;
     flex-direction: column;
     gap: 5px;
     padding: 4px 0;
     cursor: pointer;
+    background: none;
+    border: none;
 }
 .nav-hamburger span {
     display: block;
@@ -665,23 +666,24 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
     .nav-hamburger { display: flex; }
     nav .container { flex-wrap: wrap; }
     .nav-links {
-        display: none;
         flex-basis: 100%;
         flex-direction: column;
         gap: 0;
-        padding-top: 16px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
     }
     .nav-links a {
         padding: 12px 0;
         border-bottom: 1px solid var(--glass-border);
     }
     .nav-links a:last-child { border-bottom: none; }
-    .nav-toggle:checked ~ .nav-links { display: flex; }
-    .nav-toggle:checked ~ .nav-hamburger span:nth-child(1) {
+    nav.open .nav-links { max-height: 300px; padding-top: 16px; }
+    nav.open .nav-hamburger span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
-    .nav-toggle:checked ~ .nav-hamburger span:nth-child(2) { opacity: 0; }
-    .nav-toggle:checked ~ .nav-hamburger span:nth-child(3) {
+    nav.open .nav-hamburger span:nth-child(2) { opacity: 0; }
+    nav.open .nav-hamburger span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
     }
 }
