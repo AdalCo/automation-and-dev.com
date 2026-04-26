@@ -84,7 +84,19 @@ body {
 
 
 /* ---------------------------------
-   6. Glass Nav
+   6. Logo
+   --------------------------------- */
+.logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--text);
+}
+
+
+/* ---------------------------------
+   7. Glass Nav
    --------------------------------- */
 nav {
     padding: 20px 0;
@@ -126,11 +138,30 @@ nav a:hover { color: var(--text); }
     font-size: 0.9rem; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--text); }
 nav a.back {
     color: var(--text-secondary); text-decoration: none;
     font-size: 0.9rem; transition: color 0.2s;
 }
 nav a.back:hover { color: var(--text); }
+
+/* Hamburger toggle (CSS-only) */
+.nav-toggle { display: none; }
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px 0;
+    cursor: pointer;
+}
+.nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 1px;
+    transition: transform 0.3s, opacity 0.3s;
+}
 
 
 /* ---------------------------------
@@ -186,7 +217,22 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
 
 
 /* ---------------------------------
-   10. Badges / Pills
+   10. Service Icon
+   --------------------------------- */
+.service-icon {
+    width: 64px; height: 64px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+    box-shadow: 0 4px 20px rgba(38,51,204,0.35), 0 0 40px rgba(89,64,204,0.15);
+}
+
+
+/* ---------------------------------
+   11. Badges / Pills
    --------------------------------- */
 .badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -268,6 +314,7 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
     letter-spacing: -0.01em;
     box-shadow: 0 4px 20px rgba(89,64,204,0.3);
     white-space: nowrap;
+    margin-top: auto;
 }
 .app-card .tag.soon {
     background: var(--glass);
@@ -275,10 +322,56 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
     color: var(--text-secondary);
     box-shadow: none;
 }
+.app-card .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+.tech-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
 
 
 /* ---------------------------------
-   12. Feature Grid + Feature Cards
+   12. Portfolio Grid
+   --------------------------------- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+
+/* ---------------------------------
+   13. CTA
+   --------------------------------- */
+.cta {
+    text-align: center;
+    padding: 60px 0 80px;
+    position: relative;
+    z-index: 1;
+}
+.cta h2 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+}
+
+
+/* ---------------------------------
+   14. Feature Grid + Feature Cards
    --------------------------------- */
 .feature-grid {
     display: grid;
@@ -460,7 +553,87 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
 
 
 /* ---------------------------------
-   15. Scroll Reveal
+   15. Hero
+   --------------------------------- */
+.hero {
+    text-align: center;
+    padding: 100px 0 60px;
+    position: relative;
+    z-index: 1;
+}
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+.hero h1 .gradient {
+    background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+/* ---------------------------------
+   16. Section
+   --------------------------------- */
+.section {
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+}
+.section-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    text-align: center;
+}
+.section-heading {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-align: center;
+    margin-bottom: 48px;
+    line-height: 1.15;
+}
+
+
+/* ---------------------------------
+   17. Default Orb Configuration
+   --------------------------------- */
+.bg-glow .orb-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
+    top: -200px; left: -100px;
+    animation: drift1 20s ease-in-out infinite;
+}
+.bg-glow .orb-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
+    top: 400px; right: -150px;
+    animation: drift2 25s ease-in-out infinite;
+}
+.bg-glow .orb-3 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%);
+    bottom: -100px; left: 30%;
+    animation: drift3 22s ease-in-out infinite;
+}
+
+
+/* ---------------------------------
+   18. Scroll Reveal
    --------------------------------- */
 .reveal {
     opacity: 0;
@@ -481,10 +654,36 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
 }
 
 @media (max-width: 640px) {
+    .hero { padding: 80px 0 48px; }
     footer .container { justify-content: center; text-align: center; }
     .legal { padding: 40px 0 60px; }
     .legal h1 { font-size: 1.8rem; }
     .feature-grid { grid-template-columns: 1fr; max-width: none; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+
+    /* Hamburger nav */
+    .nav-hamburger { display: flex; }
+    nav .container { flex-wrap: wrap; }
+    .nav-links {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 16px;
+    }
+    .nav-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .nav-toggle:checked ~ .nav-hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .nav-toggle:checked ~ .nav-hamburger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
 }
 
 
@@ -527,10 +726,18 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
 
     /* Orbs */
     .bg-glow .orb { opacity: 0.12; }
+    .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
+    .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
+    .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.06), transparent 70%); }
 
     /* Footer */
     footer {
         border-top-color: rgba(0,0,0,0.06);
+    }
+
+    /* Service icon */
+    .service-icon {
+        box-shadow: 0 4px 16px rgba(89,64,204,0.2);
     }
 
     /* Feature cards */

@@ -15,153 +15,12 @@
     <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="../shared/base.css">
     <style>
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 100px 0 60px;
-            position: relative;
-            z-index: 1;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 3.8rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
-        /* Portfolio grid */
         .portfolio {
             padding: 0 0 100px;
             position: relative;
             z-index: 1;
         }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-        .portfolio-card {
-            padding: 36px;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s, background 0.3s;
-        }
-        a.portfolio-card {
-            text-decoration: none;
-            color: var(--text);
-        }
-        a.portfolio-card:hover {
-            transform: translateY(-4px);
-            background: var(--glass-hover);
-            border-color: var(--glass-border-hover);
-            box-shadow: 0 0 20px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.3);
-        }
-        .portfolio-card .card-icon {
-            width: 56px;
-            height: 56px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 16px rgba(38,51,204,0.25);
-        }
-        .portfolio-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 8px;
-        }
-        .portfolio-card .card-desc {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-            flex: 1;
-        }
-        .portfolio-card .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .tech-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 100px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        .portfolio-card .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--blue);
-            margin-top: auto;
-        }
-        .portfolio-card .card-link.soon {
-            color: var(--text-secondary);
-            opacity: 0.6;
-        }
-
-        /* Orb configuration */
-        .bg-glow .orb-1 {
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
-            top: -200px; left: -100px;
-            animation: drift1 20s ease-in-out infinite;
-        }
-        .bg-glow .orb-2 {
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
-            top: 400px; right: -150px;
-            animation: drift2 25s ease-in-out infinite;
-        }
-        .bg-glow .orb-3 {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%);
-            bottom: -100px; left: 30%;
-            animation: drift3 22s ease-in-out infinite;
-        }
-
-        /* Light mode */
-        @media (prefers-color-scheme: light) {
-            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
-            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
-            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.06), transparent 70%); }
-            .portfolio-card {
-                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
-            }
-            a.portfolio-card:hover {
-                box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(89,64,204,0.04);
-            }
-            .card-icon {
-                box-shadow: 0 4px 12px rgba(89,64,204,0.15);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .hero { padding: 80px 0 48px; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-card { padding: 28px; }
-        }
+        .portfolio-grid { max-width: 960px; }
     </style>
 </head>
 <body>
@@ -174,9 +33,16 @@
 
     <nav>
         <div class="container">
-            <a href="../" class="logo" style="font-size:1.1rem;font-weight:600;letter-spacing:-0.02em;text-decoration:none;color:var(--text);">Automation &amp; Development</a>
+            <a href="../" class="logo">Automation &amp; Development</a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </label>
             <div class="nav-links">
-                <a href="../">Home</a>
+                <a href="../#services">Services</a>
+                <a href="../portfolio/" class="active">Portfolio</a>
+                <a href="../about/">About</a>
+                <a href="../contact/">Contact</a>
             </div>
         </div>
     </nav>
@@ -192,52 +58,62 @@
         <div class="container">
             <div class="portfolio-grid">
                 <!-- TrackSmart -->
-                <a href="../tracksmart/" class="portfolio-card glass-card-strong reveal">
-                    <div class="card-icon circle-icon" style="background: linear-gradient(135deg, #2633CC, #5940CC);">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <a href="../tracksmart/" class="app-card reveal">
+                    <div class="app-icon">
+                        <picture>
+                            <source srcset="../tracksmart/icon-light.png" media="(prefers-color-scheme: light)">
+                            <img src="../tracksmart/icon-dark.png" alt="TrackSmart" width="64" height="64">
+                        </picture>
                     </div>
-                    <h3>TrackSmart</h3>
-                    <p class="card-desc">Privacy-first iOS expense tracker with AI-powered spending insights, smart budgets, cash flow forecasting, and spending heatmaps. All processing happens on-device — your financial data never leaves your phone.</p>
+                    <h3>Track<span class="dollar">$</span>mart</h3>
+                    <p class="subtitle">Privacy-first iOS expense tracker with AI-powered spending insights, smart budgets, cash flow forecasting, and spending heatmaps. All processing happens on-device.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">SwiftUI</span>
                         <span class="tech-tag">SwiftData</span>
                         <span class="tech-tag">CloudKit</span>
                         <span class="tech-tag">On-Device ML</span>
                     </div>
-                    <span class="card-link">
-                        View project
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </span>
+                    <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View App</span>
                 </a>
 
-                <!-- Pump Designer -->
-                <div class="portfolio-card glass-card-strong reveal">
-                    <div class="card-icon circle-icon" style="background: linear-gradient(135deg, #10B981, #059669);">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4"/><path d="M12 19v4"/><path d="M4.22 4.22l2.83 2.83"/><path d="M16.95 16.95l2.83 2.83"/><path d="M1 12h4"/><path d="M19 12h4"/><path d="M4.22 19.78l2.83-2.83"/><path d="M16.95 7.05l2.83-2.83"/></svg>
+                <!-- 3D Modeling Automation -->
+                <div class="app-card reveal" style="opacity: 0.5; cursor: default; pointer-events: none;">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
                     </div>
-                    <h3>Pump Designer</h3>
-                    <p class="card-desc">Parametric 3D pump configurator that automates pump model generation from engineering inputs. Replaces hours of manual CAD work with a streamlined configuration-to-model pipeline.</p>
+                    <h3>3D Modeling Automation</h3>
+                    <p class="subtitle">Parametric 3D configurator that automates model generation from engineering inputs. Case study coming soon.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">CAD API</span>
                         <span class="tech-tag">Parametric Modeling</span>
                         <span class="tech-tag">3D Automation</span>
                     </div>
-                    <span class="card-link soon">Case study coming soon</span>
+                    <span class="tag soon">Coming Soon</span>
                 </div>
 
                 <!-- Drawing Automation -->
-                <div class="portfolio-card glass-card-strong reveal">
-                    <div class="card-icon circle-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+                <div class="app-card reveal" style="opacity: 0.5; cursor: default; pointer-events: none;">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
                     </div>
                     <h3>Drawing Automation</h3>
-                    <p class="card-desc">Automated generation of engineering drawings including title blocks, bills of materials, and dimensions. Dramatically reduces drafting time while ensuring consistency across documentation.</p>
+                    <p class="subtitle">Automated engineering drawings with title blocks, BOMs, and dimensions. Case study coming soon.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">CAD API</span>
                         <span class="tech-tag">Title Blocks</span>
                         <span class="tech-tag">BOM Generation</span>
                     </div>
-                    <span class="card-link soon">Case study coming soon</span>
+                    <span class="tag soon">Coming Soon</span>
                 </div>
             </div>
         </div>
@@ -247,22 +123,13 @@
         <div class="container">
             <p>&copy; 2026 Automation &amp; Development</p>
             <div class="footer-links">
-                <a href="../">Home</a>
+                <a href="../tracksmart/privacy.html">Privacy Policy</a>
+                <a href="../tracksmart/terms.html">Terms of Service</a>
+                <a href="../contact/">Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll-triggered reveal -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
+    <script src="../shared/reveal.js"></script>
 </body>
 </html>

@@ -396,45 +396,9 @@
                             if (sel) sel.value = param;
                         }
                     })();
-                    document.getElementById('feedback-form').addEventListener('submit', async function(e) {
-                        e.preventDefault();
-                        const btn = this.querySelector('.submit-btn');
-                        const status = document.getElementById('form-status');
-                        btn.disabled = true;
-                        btn.textContent = 'Sending...';
-                        status.className = 'form-status';
-                        status.style.display = 'none';
-                        try {
-                            const res = await fetch('https://formspree.io/f/xykbbrzn', {
-                                method: 'POST',
-                                headers: { 'Accept': 'application/json' },
-                                body: new FormData(this)
-                            });
-                            if (res.ok) {
-                                status.textContent = 'Thanks for your feedback!';
-                                status.className = 'form-status success';
-                                this.reset();
-                            } else {
-                                throw new Error();
-                            }
-                        } catch {
-                            status.textContent = 'Something went wrong. Please try again.';
-                            status.className = 'form-status error';
-                        }
-                        status.style.display = '';
-                        btn.disabled = false;
-                        btn.textContent = 'Send Feedback';
-                        setTimeout(() => {
-                            status.style.transition = 'opacity 1s ease';
-                            status.style.opacity = '0';
-                            setTimeout(() => {
-                                status.style.display = 'none';
-                                status.style.opacity = '1';
-                                status.style.transition = '';
-                            }, 1000);
-                        }, 4000);
-                    });
                 </script>
+                <script src="../shared/form-handler.js"></script>
+                <script>initFormHandler('feedback-form', 'Thanks for your feedback!', 'Send Feedback');</script>
             </div>
         </div>
     </section>
@@ -466,18 +430,8 @@
         </div>
     </footer>
 
-    <!-- Scroll-triggered reveal -->
+    <script src="../shared/reveal.js"></script>
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
         (function() {
             var scrollTo = new URLSearchParams(location.search).get('scroll');
             if (!scrollTo) return;

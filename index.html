@@ -4,54 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation & Development — Engineering Software Solutions</title>
-    <meta name="description" content="We automate engineering workflows and build privacy-first apps. 3D modeling automation, drafting automation, and iOS app development.">
+    <meta name="description" content="We automate engineering workflows and build native iOS applications. 3D modeling automation, drafting automation, and app development.">
     <link rel="icon" type="image/png" href="tracksmart/favicon.png">
     <link rel="apple-touch-icon" href="tracksmart/favicon.png">
     <!-- Open Graph -->
     <meta property="og:title" content="Automation & Development — Engineering Software Solutions">
-    <meta property="og:description" content="We automate engineering workflows and build privacy-first apps. 3D modeling automation, drafting automation, and iOS app development.">
+    <meta property="og:description" content="We automate engineering workflows and build native iOS applications. 3D modeling automation, drafting automation, and app development.">
     <meta property="og:image" content="https://automation-and-dev.com/tracksmart/screenshots/01-Financial-Health-Light_framed.png">
     <meta property="og:url" content="https://automation-and-dev.com/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="shared/base.css">
     <style>
-        /* Logo (text-only, root level) */
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            text-decoration: none;
-            color: var(--text);
-        }
-
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 120px 0 80px;
-            position: relative;
-            z-index: 1;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 560px;
-            margin: 0 auto 48px;
-            line-height: 1.7;
-        }
+        /* Hero overrides */
+        .hero { padding: 120px 0 80px; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+        .hero p { max-width: 560px; margin: 0 auto 48px; }
         .hero-badges {
             display: flex;
             justify-content: center;
@@ -69,29 +37,6 @@
             background: var(--glass-hover);
         }
 
-        /* Section shared */
-        .section {
-            padding: 80px 0;
-            position: relative;
-            z-index: 1;
-        }
-        .section-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            text-align: center;
-        }
-        .section-heading {
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            text-align: center;
-            margin-bottom: 48px;
-            line-height: 1.15;
-        }
-
         /* Services grid */
         .services-grid {
             display: grid;
@@ -99,16 +44,6 @@
             gap: 20px;
             max-width: 900px;
             margin: 0 auto;
-        }
-        .service-icon {
-            width: 64px; height: 64px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
-            box-shadow: 0 4px 20px rgba(38,51,204,0.35), 0 0 40px rgba(89,64,204,0.15);
         }
 
         /* Why Us */
@@ -134,60 +69,12 @@
             line-height: 1.6;
         }
 
-        /* Portfolio grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 620px;
-            margin: 0 auto;
-        }
-
-        /* CTA */
-        .cta {
-            text-align: center;
-            padding: 80px 0 100px;
-            position: relative;
-            z-index: 1;
-        }
-        .cta h2 {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-        }
-
-        /* Orb configuration */
-        .bg-glow .orb-1 {
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
-            top: -200px; left: -100px;
-            animation: drift1 20s ease-in-out infinite;
-        }
-        .bg-glow .orb-2 {
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
-            top: 400px; right: -150px;
-            animation: drift2 25s ease-in-out infinite;
-        }
-        .bg-glow .orb-3 {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%);
-            bottom: -100px; left: 30%;
-            animation: drift3 22s ease-in-out infinite;
-        }
-
         /* Light mode overrides */
         @media (prefers-color-scheme: light) {
-            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
-            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
-            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.06), transparent 70%); }
             .why-us-card {
                 box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
             }
-            .service-icon {
-                box-shadow: 0 4px 16px rgba(89,64,204,0.2);
-            }
+
         }
 
         /* Responsive */
@@ -196,8 +83,6 @@
             .services-grid { grid-template-columns: 1fr; }
             .why-us-grid { grid-template-columns: 1fr; gap: 24px; }
             .why-us-card { padding: 28px; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            footer .container { justify-content: center; text-align: center; }
         }
     </style>
 </head>
@@ -212,6 +97,10 @@
     <nav>
         <div class="container">
             <a href="./" class="logo">Automation &amp; Development</a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </label>
             <div class="nav-links">
                 <a href="#services">Services</a>
                 <a href="#portfolio">Portfolio</a>
@@ -225,7 +114,7 @@
     <section class="hero reveal">
         <div class="container">
             <h1>Engineering meets <span class="gradient">Software</span></h1>
-            <p>We automate engineering workflows and build privacy-first apps. From parametric CAD models to production drawings to iOS applications.</p>
+            <p>We automate engineering workflows and build native iOS applications. From parametric CAD models to production drawings to polished mobile apps.</p>
             <div class="hero-badges">
                 <a href="#services" class="badge primary">Explore Services</a>
                 <a href="contact/" class="badge outline">Get in Touch</a>
@@ -248,7 +137,7 @@
                         </svg>
                     </div>
                     <h3>3D Modeling Automation</h3>
-                    <p class="subtitle">Parametric model generation, configuration-driven assemblies, and automated CAD workflows that eliminate repetitive design tasks.</p>
+                    <p class="subtitle">Parametric model generation and configuration-driven assemblies with custom interfaces that guide your team through design decisions — reducing errors, cutting design time, and enforcing engineering standards so every model is consistent and production-ready.</p>
                     <span class="tag">Learn More</span>
                 </a>
                 <a href="cad-automation/" class="app-card">
@@ -262,18 +151,18 @@
                         </svg>
                     </div>
                     <h3>Drafting Automation</h3>
-                    <p class="subtitle">Automated production drawings, BOM extraction, and annotation generation. Turn 3D models into shop-ready documentation programmatically.</p>
+                    <p class="subtitle">Automated production drawings, BOM extraction, and annotation generation with intuitive tool interfaces tailored to your workflow — eliminating manual drafting errors, accelerating turnaround, and ensuring every drawing meets your standards.</p>
                     <span class="tag">Learn More</span>
                 </a>
                 <a href="tracksmart/" class="app-card">
-                    <div class="app-icon">
-                        <picture>
-                            <source srcset="tracksmart/icon-light.png" media="(prefers-color-scheme: light)">
-                            <img src="tracksmart/icon-dark.png" alt="TrackSmart" width="64" height="64">
-                        </picture>
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="3"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
                     </div>
                     <h3>App Development</h3>
-                    <p class="subtitle">Privacy-first iOS apps built entirely with Apple-native frameworks. No third-party SDKs, no tracking. Your data stays on your device.</p>
+                    <p class="subtitle">Native iOS applications tailored to your business needs. Clean code, intuitive interfaces, and scalable architecture from prototype to production.</p>
                     <span class="tag">View Apps</span>
                 </a>
             </div>
@@ -292,12 +181,12 @@
                         <p>Rare combination of mechanical engineering domain expertise and professional software development.</p>
                     </div>
                     <div class="why-us-item">
-                        <h4>Code-Driven Automation</h4>
-                        <p>No clunky macros — clean, maintainable code that integrates with your CAD platform's API.</p>
+                        <h4>Custom Tools, Not Scripts</h4>
+                        <p>We build polished tools with intuitive interfaces that capture your engineering knowledge — not one-off scripts that only the developer understands.</p>
                     </div>
                     <div class="why-us-item">
-                        <h4>Privacy-First Apps</h4>
-                        <p>Built entirely with Apple-native frameworks. No third-party SDKs, no tracking.</p>
+                        <h4>Quality-Driven Development</h4>
+                        <p>Clean architecture, intuitive interfaces, and scalable code — built to your requirements, not a one-size-fits-all template.</p>
                     </div>
                     <div class="why-us-item">
                         <h4>End-to-End Delivery</h4>
@@ -322,20 +211,19 @@
                         </picture>
                     </div>
                     <h3>Track<span class="dollar">$</span>mart</h3>
-                    <p class="subtitle">AI-powered budgeting with spending insights, heatmaps, and cash flow forecasting. Privacy-first, on-device.</p>
+                    <p class="subtitle">AI-powered budgeting with spending insights, heatmaps, and cash flow forecasting. All processing on-device.</p>
                     <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View App</span>
                 </a>
                 <div class="app-card" style="opacity: 0.5; cursor: default; pointer-events: none;">
                     <div class="app-icon placeholder">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                            <line x1="9" y1="9" x2="9.01" y2="9"/>
-                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
                         </svg>
                     </div>
-                    <h3>Pump Designer</h3>
-                    <p class="subtitle">Parametric pump configuration and automated drawing generation. Case study coming soon.</p>
+                    <h3>CAD Automation</h3>
+                    <p class="subtitle">Parametric configuration and automated drawing generation. Case study coming soon.</p>
                     <span class="tag soon">Coming Soon</span>
                 </div>
             </div>
@@ -361,17 +249,6 @@
         </div>
     </footer>
 
-    <!-- Scroll-triggered reveal -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
+    <script src="shared/reveal.js"></script>
 </body>
 </html>

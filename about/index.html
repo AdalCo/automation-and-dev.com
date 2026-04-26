@@ -15,33 +15,6 @@
     <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="../shared/base.css">
     <style>
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 100px 0 60px;
-            position: relative;
-            z-index: 1;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 3.8rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
         /* Bio */
         .bio {
             padding: 0 0 72px;
@@ -121,31 +94,8 @@
         .skill-list li:last-child { border-bottom: none; }
         .skill-list li svg { flex-shrink: 0; color: var(--blue); }
 
-        /* Orb configuration */
-        .bg-glow .orb-1 {
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
-            top: -200px; left: -100px;
-            animation: drift1 20s ease-in-out infinite;
-        }
-        .bg-glow .orb-2 {
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
-            top: 400px; right: -150px;
-            animation: drift2 25s ease-in-out infinite;
-        }
-        .bg-glow .orb-3 {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%);
-            bottom: -100px; left: 30%;
-            animation: drift3 22s ease-in-out infinite;
-        }
-
-        /* Light mode orbs */
+        /* Light mode */
         @media (prefers-color-scheme: light) {
-            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
-            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
-            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.06), transparent 70%); }
             .bio-card {
                 box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
             }
@@ -159,7 +109,6 @@
 
         /* Responsive */
         @media (max-width: 640px) {
-            .hero { padding: 80px 0 48px; }
             .bio-card { padding: 28px; }
             .skills-grid { grid-template-columns: 1fr; }
             .skill-column { padding: 28px; }
@@ -176,9 +125,16 @@
 
     <nav>
         <div class="container">
-            <a href="../" class="logo" style="font-size:1.1rem;font-weight:600;letter-spacing:-0.02em;text-decoration:none;color:var(--text);">Automation &amp; Development</a>
+            <a href="../" class="logo">Automation &amp; Development</a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </label>
             <div class="nav-links">
-                <a href="../">Home</a>
+                <a href="../#services">Services</a>
+                <a href="../portfolio/">Portfolio</a>
+                <a href="../about/" class="active">About</a>
+                <a href="../contact/">Contact</a>
             </div>
         </div>
     </nav>
@@ -193,10 +149,10 @@
     <section class="bio">
         <div class="container">
             <div class="bio-card glass-card-strong reveal">
-                <h2>Hi, I'm Adalberto</h2>
+                <h2>Hi, I'm Adal</h2>
                 <p>I'm a mechanical engineer with deep experience in the pump industry — from design and drafting to 3D modeling and production workflows. Over the years, I saw how much time engineers spent on repetitive tasks that software could handle in seconds.</p>
-                <p>That realization led me into software development. I taught myself iOS development with SwiftUI and dove into CAD API programming, combining my engineering domain knowledge with code to build tools that actually solve real problems.</p>
-                <p>Today, I work at the intersection of both worlds: automating engineering workflows through custom CAD tools and building privacy-first iOS apps. The combination of understanding the engineering problem <em>and</em> being able to write the software is what sets my work apart.</p>
+                <p>That realization led me into software development. I taught myself iOS development with Swift and dove into CAD API programming, combining my engineering domain knowledge with code to build tools that actually solve real problems.</p>
+                <p>Today, I work at the intersection of both worlds: automating engineering workflows through custom CAD tools and building native iOS applications. The combination of understanding the engineering problem <em>and</em> being able to write the software is what sets my work apart.</p>
             </div>
         </div>
     </section>
@@ -219,7 +175,7 @@
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Pump Design
+                            Mechanical Design
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -237,7 +193,7 @@
                     <ul class="skill-list">
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            iOS / SwiftUI
+                            iOS / Swift
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -253,26 +209,24 @@
         </div>
     </section>
 
+    <section class="cta reveal">
+        <div class="container">
+            <h2>See My Work</h2>
+            <a href="../portfolio/" class="badge primary">View Portfolio</a>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <p>&copy; 2026 Automation &amp; Development</p>
             <div class="footer-links">
-                <a href="../">Home</a>
+                <a href="../tracksmart/privacy.html">Privacy Policy</a>
+                <a href="../tracksmart/terms.html">Terms of Service</a>
+                <a href="../contact/">Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll-triggered reveal -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
+    <script src="../shared/reveal.js"></script>
 </body>
 </html>
