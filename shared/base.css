@@ -665,13 +665,15 @@ footer p { color: var(--text-secondary); font-size: 0.85rem; }
     /* Hamburger nav */
     .nav-hamburger { display: flex; }
     nav .container { flex-wrap: wrap; }
+    .nav-hamburger { min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
     .nav-links {
         flex-basis: 100%;
         flex-direction: column;
         gap: 0;
         max-height: 0;
+        padding-top: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.3s ease, padding-top 0.3s ease;
     }
     .nav-links a {
         padding: 12px 0;
