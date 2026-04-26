@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Automation & Development</title>
+    <meta name="description" content="Meet Adalberto — mechanical engineer and iOS developer combining engineering domain expertise with software development to automate workflows and build apps.">
+    <link rel="icon" type="image/png" href="../tracksmart/favicon.png">
+    <link rel="apple-touch-icon" href="../tracksmart/favicon.png">
+    <!-- Open Graph -->
+    <meta property="og:title" content="About — Automation & Development">
+    <meta property="og:description" content="Mechanical engineer and iOS developer combining engineering domain expertise with software development to automate workflows and build apps.">
+    <meta property="og:url" content="https://automation-and-dev.com/about/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="../shared/base.css">
+    <style>
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 0 60px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* Bio */
+        .bio {
+            padding: 0 0 72px;
+            position: relative;
+            z-index: 1;
+        }
+        .bio-card {
+            padding: 48px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .bio-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .bio-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .bio-card p:last-child { margin-bottom: 0; }
+
+        /* Skills */
+        .skills {
+            padding: 0 0 100px;
+            position: relative;
+            z-index: 1;
+        }
+        .skills h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .skill-column {
+            padding: 36px;
+        }
+        .skill-column h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .skill-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            box-shadow: 0 4px 16px rgba(38,51,204,0.25);
+        }
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+        .skill-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .skill-list li:last-child { border-bottom: none; }
+        .skill-list li svg { flex-shrink: 0; color: var(--blue); }
+
+        /* Orb configuration */
+        .bg-glow .orb-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(38,51,204,0.25), transparent 70%);
+            top: -200px; left: -100px;
+            animation: drift1 20s ease-in-out infinite;
+        }
+        .bg-glow .orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(89,64,204,0.2), transparent 70%);
+            top: 400px; right: -150px;
+            animation: drift2 25s ease-in-out infinite;
+        }
+        .bg-glow .orb-3 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,122,255,0.12), transparent 70%);
+            bottom: -100px; left: 30%;
+            animation: drift3 22s ease-in-out infinite;
+        }
+
+        /* Light mode orbs */
+        @media (prefers-color-scheme: light) {
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(89,64,204,0.12), transparent 70%); }
+            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.08), transparent 70%); }
+            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,122,255,0.06), transparent 70%); }
+            .bio-card {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
+            }
+            .skill-column {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            }
+            .skill-icon {
+                box-shadow: 0 4px 12px rgba(89,64,204,0.15);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 80px 0 48px; }
+            .bio-card { padding: 28px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-column { padding: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating gradient orbs -->
+    <div class="bg-glow">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="../" class="logo" style="font-size:1.1rem;font-weight:600;letter-spacing:-0.02em;text-decoration:none;color:var(--text);">Automation &amp; Development</a>
+            <div class="nav-links">
+                <a href="../">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero reveal">
+        <div class="container">
+            <h1><span class="gradient">About</span></h1>
+            <p>Engineering expertise meets software development.</p>
+        </div>
+    </section>
+
+    <section class="bio">
+        <div class="container">
+            <div class="bio-card glass-card-strong reveal">
+                <h2>Hi, I'm Adalberto</h2>
+                <p>I'm a mechanical engineer with deep experience in the pump industry — from design and drafting to 3D modeling and production workflows. Over the years, I saw how much time engineers spent on repetitive tasks that software could handle in seconds.</p>
+                <p>That realization led me into software development. I taught myself iOS development with SwiftUI and dove into CAD API programming, combining my engineering domain knowledge with code to build tools that actually solve real problems.</p>
+                <p>Today, I work at the intersection of both worlds: automating engineering workflows through custom CAD tools and building privacy-first iOS apps. The combination of understanding the engineering problem <em>and</em> being able to write the software is what sets my work apart.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills">
+        <div class="container">
+            <h2 class="reveal">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-column glass-card reveal">
+                    <h3>
+                        <div class="skill-icon circle-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
+                        </div>
+                        Engineering
+                    </h3>
+                    <ul class="skill-list">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            CAD / 3D Modeling
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Pump Design
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Drafting Automation
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-column glass-card reveal">
+                    <h3>
+                        <div class="skill-icon circle-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        Software
+                    </h3>
+                    <ul class="skill-list">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            iOS / SwiftUI
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            CAD API Development
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Web Development
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Automation &amp; Development</p>
+            <div class="footer-links">
+                <a href="../">Home</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll-triggered reveal -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
