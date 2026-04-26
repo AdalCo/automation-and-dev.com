@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Automation — Automation & Development</title>
+    <meta name="description" content="Automate repetitive CAD workflows. Custom 3D modeling automation, drafting automation, and parametric design tools for SolidWorks, Inventor, AutoCAD, and FreeCAD.">
+    <link rel="icon" type="image/png" href="../tracksmart/favicon.png">
+    <link rel="apple-touch-icon" href="../tracksmart/favicon.png">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Engineering Automation — Automation & Development">
+    <meta property="og:description" content="Automate repetitive CAD workflows. Custom 3D modeling automation, drafting automation, and parametric design tools.">
+    <meta property="og:url" content="https://automation-and-dev.com/cad-automation/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../shared/base.css">
+    <style>
+        /* Orb configuration */
+        .bg-glow .orb-1 {
+            width: 650px; height: 650px;
+            background: radial-gradient(circle, rgba(20,80,180,0.22), transparent 70%);
+            top: -220px; left: -120px;
+            animation: drift1 20s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
+        }
+        .bg-glow .orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(38,51,204,0.18), transparent 70%);
+            top: 350px; right: -180px;
+            animation: drift2 25s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
+        }
+        .bg-glow .orb-3 {
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(0,150,200,0.12), transparent 70%);
+            bottom: 100px; left: 25%;
+            animation: drift3 22s ease-in-out infinite;
+            will-change: transform;
+            contain: strict;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 120px 0 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Services section */
+        .services {
+            padding: 60px 0 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .services h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .service-card {
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 0 20px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .service-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            box-shadow: 0 4px 20px rgba(38,51,204,0.3);
+        }
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .service-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: 5px 0;
+        }
+        .service-card ul li svg {
+            flex-shrink: 0;
+            color: var(--blue);
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .how-it-works h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .step-card {
+            padding: 28px 24px;
+            text-align: center;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+        .step-card:hover {
+            border-color: var(--glass-border-hover);
+            background: var(--glass-hover);
+            transform: translateY(-2px);
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--indigo-from), var(--indigo-to));
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .step-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Platforms */
+        .platforms {
+            padding: 60px 0 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .platforms h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .platform-card {
+            padding: 24px 16px;
+            text-align: center;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+        .platform-card:hover {
+            border-color: var(--glass-border-hover);
+            background: var(--glass-hover);
+            transform: translateY(-2px);
+        }
+        .platform-card .platform-icon {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 12px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+        }
+        .platform-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 64px 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; max-width: 440px; }
+            .steps-grid { grid-template-columns: 1fr; max-width: 360px; }
+            .platforms-grid { grid-template-columns: 1fr 1fr; max-width: 360px; }
+        }
+        @media (max-width: 640px) {
+            .hero { padding: 80px 0 60px; }
+            .nav-links .back { display: none; }
+        }
+
+        /* Light mode overrides */
+        @media (prefers-color-scheme: light) {
+            .bg-glow .orb-1 { background: radial-gradient(circle, rgba(20,80,180,0.10), transparent 70%); }
+            .bg-glow .orb-2 { background: radial-gradient(circle, rgba(38,51,204,0.07), transparent 70%); }
+            .bg-glow .orb-3 { background: radial-gradient(circle, rgba(0,150,200,0.05), transparent 70%); }
+            .service-card {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.03);
+            }
+            .service-card:hover {
+                box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 30px rgba(89,64,204,0.04);
+            }
+            .service-icon {
+                box-shadow: 0 4px 16px rgba(89,64,204,0.18);
+            }
+            .step-card {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            }
+            .step-card:hover {
+                box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 8px 30px rgba(0,0,0,0.04);
+            }
+            .platform-card {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            }
+            .platform-card:hover {
+                box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating gradient orbs -->
+    <div class="bg-glow">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="../" class="nav-logo">
+                <span>Automation & Development</span>
+            </a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#how-it-works">Process</a>
+                <a href="#platforms">Platforms</a>
+                <a href="../" class="back">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero reveal">
+        <div class="container">
+            <h1>Engineering <span class="gradient">Automation</span></h1>
+            <p>Automate repetitive CAD workflows. Eliminate manual drafting. Ship designs faster with custom-built tools that integrate directly into your engineering process.</p>
+        </div>
+    </section>
+
+    <section class="services reveal" id="services">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <!-- 3D Modeling Automation -->
+                <div class="service-card glass-card-strong">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>3D Modeling Automation</h3>
+                    <p>Generate parametric models, design configurators, and automated assemblies from engineering inputs — no manual modeling required.</p>
+                    <ul>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Parametric model generation
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Design configurators
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Automated assemblies
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Drafting Automation -->
+                <div class="service-card glass-card-strong">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="8" y1="13" x2="16" y2="13"/>
+                            <line x1="8" y1="17" x2="16" y2="17"/>
+                            <line x1="8" y1="9" x2="10" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Drafting Automation</h3>
+                    <p>Automatically generate production drawings with title blocks, BOM tables, dimensions, and annotations — then batch export to PDF.</p>
+                    <ul>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Automated drawing generation
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Title blocks &amp; BOM tables
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Batch PDF exports
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works reveal" id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card feature-card glass-card">
+                    <div class="step-number">1</div>
+                    <h3>Analyze Your Workflow</h3>
+                    <p>We study your current manual process to identify bottlenecks and repetitive tasks that can be automated.</p>
+                </div>
+                <div class="step-card feature-card glass-card">
+                    <div class="step-number">2</div>
+                    <h3>Build the Automation</h3>
+                    <p>Custom code that integrates directly with your CAD platform — built to match your engineering standards.</p>
+                </div>
+                <div class="step-card feature-card glass-card">
+                    <div class="step-number">3</div>
+                    <h3>Deploy &amp; Support</h3>
+                    <p>Deliver the tool, train your team, and provide ongoing support to keep your automation running smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms reveal" id="platforms">
+        <div class="container">
+            <h2>Supported Platforms</h2>
+            <div class="platforms-grid">
+                <div class="platform-card glass-card">
+                    <div class="platform-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>SolidWorks</h3>
+                </div>
+                <div class="platform-card glass-card">
+                    <div class="platform-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Autodesk Inventor</h3>
+                </div>
+                <div class="platform-card glass-card">
+                    <div class="platform-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="4" x2="20" y2="4"/>
+                            <line x1="4" y1="4" x2="4" y2="20"/>
+                            <polyline points="4 16 10 10 14 14 20 8"/>
+                        </svg>
+                    </div>
+                    <h3>AutoCAD</h3>
+                </div>
+                <div class="platform-card glass-card">
+                    <div class="platform-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                    </div>
+                    <h3>FreeCAD</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section reveal">
+        <div class="container">
+            <h2>Ready to automate?</h2>
+            <p>Tell us about your workflow and we'll show you what's possible.</p>
+            <a href="mailto:autoanddev@gmail.com" class="badge primary">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Automation &amp; Development</p>
+            <div class="footer-links">
+                <a href="../">Home</a>
+                <a href="mailto:autoanddev@gmail.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll-triggered reveal -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
